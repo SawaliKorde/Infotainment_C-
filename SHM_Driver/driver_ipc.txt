@@ -1,0 +1,124 @@
+
+
+
+Project Title: Linux Device Driver for Writing to Shared Memory
+
+
+
+Objective:
+Develop a Linux kernel module (device driver) that writes data to a shared memory segment. 
+The shared memory is set up by a user-space server, and a client application reads and displays 
+the values written by the driver.
+
+This project provides hands-on experience with Linux device drivers, shared memory management, 
+and inter-process communication (IPC) while ensuring 
+efficient data exchange between kernel and user-space processes.
+
+Project Description:
+This project involves the creation of a Linux kernel module that interacts with user-space applications via shared memory. 
+The system consists of three main components:
+
+
+
+
+Kernel Module (Device Driver):
+
+Registers a character device /dev/shm_writer.
+
+Maps a predefined physical memory address using ioremap.
+
+Accepts data from user-space applications via write() calls.
+
+Writes the received data to the shared memory region.
+
+
+
+
+User-Space Server:
+
+Allocates and initializes shared memory using mmap and /dev/mem.
+
+Ensures continuous availability of shared memory for kernel interaction.
+
+Runs as a background process to keep the memory accessible.
+
+
+
+
+User-Space Client:
+
+Maps the shared memory region for reading using mmap.
+
+Periodically reads the shared memory content.
+
+Displays the data written by the kernel module.
+
+
+
+
+Implementation Details:
+
+Kernel Module (shm_writer.c)
+
+Uses misc_register to create a character device.
+
+Implements write() function to accept user input and write to shared memory.
+
+Uses ioremap to map the shared memory location.
+
+Server Application (shm_server.c)
+
+Opens /dev/mem to access physical memory.
+
+Maps the shared memory region using mmap.
+
+Initializes the memory and keeps running to maintain accessibility.
+
+Client Application (shm_client.c)
+
+Opens /dev/mem in read-only mode.
+
+Maps the shared memory using mmap.
+
+Periodically reads and displays the data.
+
+
+
+
+
+
+How It Works:
+
+The server allocates shared memory at a predefined address.
+
+The kernel module maps this memory and provides a character device for writing data.
+
+A user-space application writes data to /dev/shm_writer.
+
+The kernel module writes the received data into shared memory.
+
+The client application reads from shared memory and displays the values.
+
+
+
+
+
+
+Expected Outcome:
+
+A functional kernel module that can write to shared memory.
+
+A server that sets up and manages the shared memory.
+
+A client that reads and displays the shared memory content.
+
+Demonstration of kernel and user-space interaction through shared memory.
+
+Potential Enhancements:
+
+Implementing synchronization mechanisms to handle concurrent access.
+
+Extending support for multiple clients.
+
+Adding a mechanism to clear shared memory after a read operation.
+

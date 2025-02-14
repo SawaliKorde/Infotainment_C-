@@ -1,0 +1,1 @@
+savedcmd_/home/rps/Documents/Assignment_Dist_sys/all_drivers/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/rps/Documents/Assignment_Dist_sys/all_drivers/Module.symvers -T /home/rps/Documents/Assignment_Dist_sys/all_drivers/modules.order -i Module.symvers -e 

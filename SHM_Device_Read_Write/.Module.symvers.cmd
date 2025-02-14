@@ -1,0 +1,1 @@
+savedcmd_/home/rps/Documents/SHM_Device_Read_Write/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/rps/Documents/SHM_Device_Read_Write/Module.symvers -T /home/rps/Documents/SHM_Device_Read_Write/modules.order -i Module.symvers -e 

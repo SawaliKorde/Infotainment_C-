@@ -1,0 +1,72 @@
+DevID: 1
+Protocol: PROFIBUS
+Device Name: RPM6
+RPM: 55
+Device Name: Voltage3
+Voltage: 169
+Bus ID: 3
+
+
+DevID: 3
+Protocol: PROFIBUS
+Device Name: RPM8
+RPM: 51
+Device Name: Voltage0
+Voltage: 205
+Bus ID: 2
+
+
+DevID: 1
+Protocol: PROFIBUS
+Device Name: RPM8
+RPM: 47
+Device Name: Voltage5
+Voltage: 2
+Bus ID: 4
+
+
+DevID: 3
+Protocol: PROFIBUS
+Device Name: RPM9
+RPM: 43
+Device Name: Voltage1
+Voltage: 136
+Bus ID: 3
+
+
+DevID: 4
+Protocol: PROFIBUS
+Device Name: RPM4
+RPM: 32
+Device Name: Voltage1
+Voltage: 235
+Bus ID: 4
+
+
+DevID: 4
+Protocol: PROFIBUS
+Device Name: RPM3
+RPM: 53
+Device Name: Voltage9
+Voltage: 179
+Bus ID: 2
+
+
+DevID: 0
+Protocol: PROFIBUS
+Device Name: RPM8
+RPM: 28
+Device Name: Voltage9
+Voltage: 241
+Bus ID: 3
+
+
+DevID: 0
+Protocol: PROFIBUS
+Device Name: RPM8
+RPM: 28
+Device Name: Voltage9
+Voltage: 241
+Bus ID: 3
+
+

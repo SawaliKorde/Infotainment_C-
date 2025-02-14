@@ -1,0 +1,1 @@
+savedcmd_/home/rps/Documents/SHM_Device_Read_Write/Driversm.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/rps/Documents/SHM_Device_Read_Write/Driversm.ko /home/rps/Documents/SHM_Device_Read_Write/Driversm.o /home/rps/Documents/SHM_Device_Read_Write/Driversm.mod.o

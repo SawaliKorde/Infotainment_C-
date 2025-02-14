@@ -1,0 +1,1 @@
+bus_id:3 scale:27 raw_data:15.00 dev_id:1

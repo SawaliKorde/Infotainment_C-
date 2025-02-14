@@ -1,0 +1,1107 @@
+DevID: 1
+Protocol: TCP
+Device Name: Temperature5
+Temperature: 49
+Device Name: Pressure4
+Pressure: 57
+Bus ID: 1
+
+
+DevID: 0
+Protocol: TCP
+Device Name: Temperature1
+Temperature: 12
+Device Name: Pressure9
+Pressure: 13
+Bus ID: 0
+
+
+DevID: 0
+Protocol: TCP
+Device Name: Temperature1
+Temperature: 12
+Device Name: Pressure9
+Pressure: 13
+Bus ID: 0
+
+
+DevID: 0
+Protocol: TCP
+Device Name: Temperature1
+Temperature: 12
+Device Name: Pressure9
+Pressure: 13
+Bus ID: 0
+
+
+DevID: 0
+Protocol: TCP
+Device Name: Temperature9
+Temperature: 45
+Device Name: Pressure5
+Pressure: 64
+Bus ID: 3
+
+
+DevID: 0
+Protocol: TCP
+Device Name: Temperature9
+Temperature: 45
+Device Name: Pressure5
+Pressure: 64
+Bus ID: 3
+
+
+DevID: 0
+Protocol: TCP
+Device Name: Temperature9
+Temperature: 45
+Device Name: Pressure5
+Pressure: 64
+Bus ID: 3
+
+
+DevID: 3
+Protocol: TCP
+Device Name: Temperature7
+Temperature: 10
+Device Name: Pressure4
+Pressure: 52
+Bus ID: 1
+
+
+DevID: 3
+Protocol: TCP
+Device Name: Temperature7
+Temperature: 10
+Device Name: Pressure4
+Pressure: 52
+Bus ID: 1
+
+
+DevID: 3
+Protocol: TCP
+Device Name: Temperature7
+Temperature: 10
+Device Name: Pressure4
+Pressure: 52
+Bus ID: 1
+
+
+DevID: 2
+Protocol: TCP
+Device Name: Temperature4
+Temperature: 11
+Device Name: Pressure7
+Pressure: 15
+Bus ID: 0
+
+
+DevID: 2
+Protocol: TCP
+Device Name: Temperature4
+Temperature: 11
+Device Name: Pressure7
+Pressure: 15
+Bus ID: 0
+
+
+DevID: 2
+Protocol: TCP
+Device Name: Temperature4
+Temperature: 11
+Device Name: Pressure7
+Pressure: 15
+Bus ID: 0
+
+
+DevID: 4
+Protocol: TCP
+Device Name: Temperature2
+Temperature: 31
+Device Name: Pressure5
+Pressure: 1
+Bus ID: 3
+
+
+DevID: 4
+Protocol: TCP
+Device Name: Temperature2
+Temperature: 31
+Device Name: Pressure5
+Pressure: 1
+Bus ID: 3
+
+
+DevID: 4
+Protocol: TCP
+Device Name: Temperature2
+Temperature: 31
+Device Name: Pressure5
+Pressure: 1
+Bus ID: 3
+
+
+DevID: 0
+Protocol: TCP
+Device Name: Temperature0
+Temperature: 13
+Device Name: Pressure2
+Pressure: 24
+Bus ID: 2
+
+
+DevID: 0
+Protocol: TCP
+Device Name: Temperature0
+Temperature: 13
+Device Name: Pressure2
+Pressure: 24
+Bus ID: 2
+
+
+DevID: 0
+Protocol: TCP
+Device Name: Temperature0
+Temperature: 13
+Device Name: Pressure2
+Pressure: 24
+Bus ID: 2
+
+
+DevID: 1
+Protocol: TCP
+Device Name: Temperature8
+Temperature: 13
+Device Name: Pressure9
+Pressure: 7
+Bus ID: 4
+
+
+DevID: 1
+Protocol: TCP
+Device Name: Temperature8
+Temperature: 13
+Device Name: Pressure9
+Pressure: 7
+Bus ID: 4
+
+
+DevID: 1
+Protocol: TCP
+Device Name: Temperature8
+Temperature: 13
+Device Name: Pressure9
+Pressure: 7
+Bus ID: 4
+
+
+DevID: 4
+Protocol: TCP
+Device Name: Temperature0
+Temperature: 25
+Device Name: Pressure9
+Pressure: 26
+Bus ID: 3
+
+
+DevID: 4
+Protocol: TCP
+Device Name: Temperature0
+Temperature: 25
+Device Name: Pressure9
+Pressure: 26
+Bus ID: 3
+
+
+DevID: 4
+Protocol: TCP
+Device Name: Temperature0
+Temperature: 25
+Device Name: Pressure9
+Pressure: 26
+Bus ID: 3
+
+
+DevID: 1
+Protocol: TCP
+Device Name: Temperature3
+Temperature: 2
+Device Name: Pressure7
+Pressure: 74
+Bus ID: 2
+
+
+DevID: 1
+Protocol: TCP
+Device Name: Temperature3
+Temperature: 2
+Device Name: Pressure7
+Pressure: 74
+Bus ID: 2
+
+
+DevID: 1
+Protocol: TCP
+Device Name: Temperature3
+Temperature: 2
+Device Name: Pressure7
+Pressure: 74
+Bus ID: 2
+
+
+DevID: 3
+Protocol: TCP
+Device Name: Temperature6
+Temperature: 23
+Device Name: Pressure7
+Pressure: 54
+Bus ID: 1
+
+
+DevID: 3
+Protocol: TCP
+Device Name: Temperature6
+Temperature: 23
+Device Name: Pressure7
+Pressure: 54
+Bus ID: 1
+
+
+DevID: 3
+Protocol: TCP
+Device Name: Temperature6
+Temperature: 23
+Device Name: Pressure7
+Pressure: 54
+Bus ID: 1
+
+
+DevID: 4
+Protocol: TCP
+Device Name: Temperature4
+Temperature: 28
+Device Name: Pressure9
+Pressure: 86
+Bus ID: 3
+
+
+DevID: 4
+Protocol: TCP
+Device Name: Temperature4
+Temperature: 28
+Device Name: Pressure9
+Pressure: 86
+Bus ID: 3
+
+
+DevID: 4
+Protocol: TCP
+Device Name: Temperature4
+Temperature: 28
+Device Name: Pressure9
+Pressure: 86
+Bus ID: 3
+
+
+DevID: 2
+Protocol: TCP
+Device Name: Temperature2
+Temperature: 22
+Device Name: Pressure2
+Pressure: 92
+Bus ID: 3
+
+
+DevID: 0
+Protocol: TCP
+Device Name: Temperature6
+Temperature: 7
+Device Name: Pressure2
+Pressure: 12
+Bus ID: 1
+
+
+DevID: 0
+Protocol: TCP
+Device Name: Temperature6
+Temperature: 7
+Device Name: Pressure2
+Pressure: 12
+Bus ID: 1
+
+
+DevID: 0
+Protocol: TCP
+Device Name: Temperature6
+Temperature: 7
+Device Name: Pressure2
+Pressure: 12
+Bus ID: 1
+
+
+DevID: 3
+Protocol: TCP
+Device Name: Temperature0
+Temperature: 29
+Device Name: Pressure7
+Pressure: 19
+Bus ID: 3
+
+
+DevID: 3
+Protocol: TCP
+Device Name: Temperature0
+Temperature: 29
+Device Name: Pressure7
+Pressure: 19
+Bus ID: 3
+
+
+DevID: 3
+Protocol: TCP
+Device Name: Temperature0
+Temperature: 29
+Device Name: Pressure7
+Pressure: 19
+Bus ID: 3
+
+
+DevID: 2
+Protocol: TCP
+Device Name: Temperature4
+Temperature: 22
+Device Name: Pressure2
+Pressure: 5
+Bus ID: 3
+
+
+DevID: 2
+Protocol: TCP
+Device Name: Temperature4
+Temperature: 22
+Device Name: Pressure2
+Pressure: 5
+Bus ID: 3
+
+
+DevID: 2
+Protocol: TCP
+Device Name: Temperature4
+Temperature: 22
+Device Name: Pressure2
+Pressure: 5
+Bus ID: 3
+
+
+DevID: 2
+Protocol: TCP
+Device Name: Temperature6
+Temperature: 28
+Device Name: Pressure2
+Pressure: 81
+Bus ID: 1
+
+
+DevID: 2
+Protocol: TCP
+Device Name: Temperature6
+Temperature: 28
+Device Name: Pressure2
+Pressure: 81
+Bus ID: 1
+
+
+DevID: 2
+Protocol: TCP
+Device Name: Temperature6
+Temperature: 28
+Device Name: Pressure2
+Pressure: 81
+Bus ID: 1
+
+
+DevID: 2
+Protocol: TCP
+Device Name: Temperature6
+Temperature: 31
+Device Name: Pressure7
+Pressure: 4
+Bus ID: 2
+
+
+DevID: 2
+Protocol: TCP
+Device Name: Temperature6
+Temperature: 31
+Device Name: Pressure7
+Pressure: 4
+Bus ID: 2
+
+
+DevID: 2
+Protocol: TCP
+Device Name: Temperature6
+Temperature: 31
+Device Name: Pressure7
+Pressure: 4
+Bus ID: 2
+
+
+DevID: 3
+Protocol: TCP
+Device Name: Temperature6
+Temperature: 47
+Device Name: Pressure0
+Pressure: 42
+Bus ID: 3
+
+
+DevID: 3
+Protocol: TCP
+Device Name: Temperature6
+Temperature: 47
+Device Name: Pressure0
+Pressure: 42
+Bus ID: 3
+
+
+DevID: 3
+Protocol: TCP
+Device Name: Temperature6
+Temperature: 47
+Device Name: Pressure0
+Pressure: 42
+Bus ID: 3
+
+
+DevID: 0
+Protocol: TCP
+Device Name: Temperature9
+Temperature: 40
+Device Name: Pressure8
+Pressure: 37
+Bus ID: 4
+
+
+DevID: 0
+Protocol: TCP
+Device Name: Temperature9
+Temperature: 40
+Device Name: Pressure8
+Pressure: 37
+Bus ID: 4
+
+
+DevID: 0
+Protocol: TCP
+Device Name: Temperature9
+Temperature: 40
+Device Name: Pressure8
+Pressure: 37
+Bus ID: 4
+
+
+DevID: 1
+Protocol: TCP
+Device Name: Temperature8
+Temperature: 40
+Device Name: Pressure0
+Pressure: 21
+Bus ID: 4
+
+
+DevID: 1
+Protocol: TCP
+Device Name: Temperature8
+Temperature: 40
+Device Name: Pressure0
+Pressure: 21
+Bus ID: 4
+
+
+DevID: 1
+Protocol: TCP
+Device Name: Temperature8
+Temperature: 40
+Device Name: Pressure0
+Pressure: 21
+Bus ID: 4
+
+
+DevID: 1
+Protocol: TCP
+Device Name: Temperature4
+Temperature: 45
+Device Name: Pressure0
+Pressure: 36
+Bus ID: 0
+
+
+DevID: 1
+Protocol: TCP
+Device Name: Temperature4
+Temperature: 45
+Device Name: Pressure0
+Pressure: 36
+Bus ID: 0
+
+
+DevID: 1
+Protocol: TCP
+Device Name: Temperature4
+Temperature: 45
+Device Name: Pressure0
+Pressure: 36
+Bus ID: 0
+
+
+DevID: 3
+Protocol: TCP
+Device Name: Temperature3
+Temperature: 5
+Device Name: Pressure6
+Pressure: 3
+Bus ID: 2
+
+
+DevID: 3
+Protocol: TCP
+Device Name: Temperature3
+Temperature: 5
+Device Name: Pressure6
+Pressure: 3
+Bus ID: 2
+
+
+DevID: 3
+Protocol: TCP
+Device Name: Temperature3
+Temperature: 5
+Device Name: Pressure6
+Pressure: 3
+Bus ID: 2
+
+
+DevID: 1
+Protocol: TCP
+Device Name: Temperature7
+Temperature: 28
+Device Name: Pressure9
+Pressure: 61
+Bus ID: 4
+
+
+DevID: 1
+Protocol: TCP
+Device Name: Temperature7
+Temperature: 28
+Device Name: Pressure9
+Pressure: 61
+Bus ID: 4
+
+
+DevID: 1
+Protocol: TCP
+Device Name: Temperature7
+Temperature: 28
+Device Name: Pressure9
+Pressure: 61
+Bus ID: 4
+
+
+DevID: 4
+Protocol: TCP
+Device Name: Temperature3
+Temperature: 24
+Device Name: Pressure7
+Pressure: 16
+Bus ID: 4
+
+
+DevID: 4
+Protocol: TCP
+Device Name: Temperature3
+Temperature: 24
+Device Name: Pressure7
+Pressure: 16
+Bus ID: 4
+
+
+DevID: 4
+Protocol: TCP
+Device Name: Temperature3
+Temperature: 24
+Device Name: Pressure7
+Pressure: 16
+Bus ID: 4
+
+
+DevID: 3
+Protocol: TCP
+Device Name: Temperature4
+Temperature: 39
+Device Name: Pressure5
+Pressure: 7
+Bus ID: 0
+
+
+DevID: 4
+Protocol: TCP
+Device Name: Temperature1
+Temperature: 3
+Device Name: Pressure9
+Pressure: 55
+Bus ID: 2
+
+
+DevID: 4
+Protocol: TCP
+Device Name: Temperature1
+Temperature: 3
+Device Name: Pressure9
+Pressure: 55
+Bus ID: 2
+
+
+DevID: 4
+Protocol: TCP
+Device Name: Temperature1
+Temperature: 3
+Device Name: Pressure9
+Pressure: 55
+Bus ID: 2
+
+
+DevID: 1
+Protocol: TCP
+Device Name: Temperature5
+Temperature: 23
+Device Name: Pressure3
+Pressure: 37
+Bus ID: 0
+
+
+DevID: 1
+Protocol: TCP
+Device Name: Temperature5
+Temperature: 23
+Device Name: Pressure3
+Pressure: 37
+Bus ID: 0
+
+
+DevID: 1
+Protocol: TCP
+Device Name: Temperature5
+Temperature: 23
+Device Name: Pressure3
+Pressure: 37
+Bus ID: 0
+
+
+DevID: 2
+Protocol: TCP
+Device Name: Temperature6
+Temperature: 21
+Device Name: Pressure0
+Pressure: 33
+Bus ID: 1
+
+
+DevID: 2
+Protocol: TCP
+Device Name: Temperature6
+Temperature: 21
+Device Name: Pressure0
+Pressure: 33
+Bus ID: 1
+
+
+DevID: 2
+Protocol: TCP
+Device Name: Temperature6
+Temperature: 21
+Device Name: Pressure0
+Pressure: 33
+Bus ID: 1
+
+
+DevID: 0
+Protocol: TCP
+Device Name: Temperature6
+Temperature: 1
+Device Name: Pressure5
+Pressure: 63
+Bus ID: 3
+
+
+DevID: 0
+Protocol: TCP
+Device Name: Temperature6
+Temperature: 1
+Device Name: Pressure5
+Pressure: 63
+Bus ID: 3
+
+
+DevID: 0
+Protocol: TCP
+Device Name: Temperature6
+Temperature: 1
+Device Name: Pressure5
+Pressure: 63
+Bus ID: 3
+
+
+DevID: 1
+Protocol: TCP
+Device Name: Temperature2
+Temperature: 16
+Device Name: Pressure3
+Pressure: 78
+Bus ID: 2
+
+
+DevID: 1
+Protocol: TCP
+Device Name: Temperature2
+Temperature: 16
+Device Name: Pressure3
+Pressure: 78
+Bus ID: 2
+
+
+DevID: 1
+Protocol: TCP
+Device Name: Temperature2
+Temperature: 16
+Device Name: Pressure3
+Pressure: 78
+Bus ID: 2
+
+
+DevID: 1
+Protocol: TCP
+Device Name: Temperature4
+Temperature: 15
+Device Name: Pressure2
+Pressure: 38
+Bus ID: 1
+
+
+DevID: 1
+Protocol: TCP
+Device Name: Temperature4
+Temperature: 15
+Device Name: Pressure2
+Pressure: 38
+Bus ID: 1
+
+
+DevID: 1
+Protocol: TCP
+Device Name: Temperature4
+Temperature: 15
+Device Name: Pressure2
+Pressure: 38
+Bus ID: 1
+
+
+DevID: 4
+Protocol: TCP
+Device Name: Temperature5
+Temperature: 5
+Device Name: Pressure1
+Pressure: 86
+Bus ID: 3
+
+
+DevID: 4
+Protocol: TCP
+Device Name: Temperature5
+Temperature: 5
+Device Name: Pressure1
+Pressure: 86
+Bus ID: 3
+
+
+DevID: 4
+Protocol: TCP
+Device Name: Temperature5
+Temperature: 5
+Device Name: Pressure1
+Pressure: 86
+Bus ID: 3
+
+
+DevID: 1
+Protocol: TCP
+Device Name: Temperature7
+Temperature: 42
+Device Name: Pressure4
+Pressure: 34
+Bus ID: 3
+
+
+DevID: 1
+Protocol: TCP
+Device Name: Temperature7
+Temperature: 42
+Device Name: Pressure4
+Pressure: 34
+Bus ID: 3
+
+
+DevID: 1
+Protocol: TCP
+Device Name: Temperature7
+Temperature: 42
+Device Name: Pressure4
+Pressure: 34
+Bus ID: 3
+
+
+DevID: 2
+Protocol: TCP
+Device Name: Temperature5
+Temperature: 9
+Device Name: Pressure9
+Pressure: 37
+Bus ID: 0
+
+
+DevID: 2
+Protocol: TCP
+Device Name: Temperature5
+Temperature: 9
+Device Name: Pressure9
+Pressure: 37
+Bus ID: 0
+
+
+DevID: 2
+Protocol: TCP
+Device Name: Temperature5
+Temperature: 9
+Device Name: Pressure9
+Pressure: 37
+Bus ID: 0
+
+
+DevID: 1
+Protocol: TCP
+Device Name: Temperature9
+Temperature: 31
+Device Name: Pressure8
+Pressure: 78
+Bus ID: 4
+
+
+DevID: 1
+Protocol: TCP
+Device Name: Temperature9
+Temperature: 31
+Device Name: Pressure8
+Pressure: 78
+Bus ID: 4
+
+
+DevID: 1
+Protocol: TCP
+Device Name: Temperature9
+Temperature: 31
+Device Name: Pressure8
+Pressure: 78
+Bus ID: 4
+
+
+DevID: 2
+Protocol: TCP
+Device Name: Temperature4
+Temperature: 15
+Device Name: Pressure5
+Pressure: 63
+Bus ID: 4
+
+
+DevID: 2
+Protocol: TCP
+Device Name: Temperature4
+Temperature: 15
+Device Name: Pressure5
+Pressure: 63
+Bus ID: 4
+
+
+DevID: 2
+Protocol: TCP
+Device Name: Temperature4
+Temperature: 15
+Device Name: Pressure5
+Pressure: 63
+Bus ID: 4
+
+
+DevID: 0
+Protocol: TCP
+Device Name: Temperature8
+Temperature: 15
+Device Name: Pressure4
+Pressure: 99
+Bus ID: 1
+
+
+DevID: 0
+Protocol: TCP
+Device Name: Temperature8
+Temperature: 15
+Device Name: Pressure4
+Pressure: 99
+Bus ID: 1
+
+
+DevID: 0
+Protocol: TCP
+Device Name: Temperature8
+Temperature: 15
+Device Name: Pressure4
+Pressure: 99
+Bus ID: 1
+
+
+DevID: 2
+Protocol: TCP
+Device Name: Temperature1
+Temperature: 35
+Device Name: Pressure9
+Pressure: 86
+Bus ID: 0
+
+
+DevID: 2
+Protocol: TCP
+Device Name: Temperature1
+Temperature: 35
+Device Name: Pressure9
+Pressure: 86
+Bus ID: 0
+
+
+DevID: 2
+Protocol: TCP
+Device Name: Temperature1
+Temperature: 35
+Device Name: Pressure9
+Pressure: 86
+Bus ID: 0
+
+
+DevID: 1
+Protocol: TCP
+Device Name: Temperature2
+Temperature: 2
+Device Name: Pressure9
+Pressure: 58
+Bus ID: 2
+
+
+DevID: 1
+Protocol: TCP
+Device Name: Temperature2
+Temperature: 2
+Device Name: Pressure9
+Pressure: 58
+Bus ID: 2
+
+
+DevID: 1
+Protocol: TCP
+Device Name: Temperature2
+Temperature: 2
+Device Name: Pressure9
+Pressure: 58
+Bus ID: 2
+
+
+DevID: 0
+Protocol: TCP
+Device Name: Temperature0
+Temperature: 11
+Device Name: Pressure9
+Pressure: 62
+Bus ID: 2
+
+
+DevID: 0
+Protocol: TCP
+Device Name: Temperature0
+Temperature: 11
+Device Name: Pressure9
+Pressure: 62
+Bus ID: 2
+
+
+DevID: 0
+Protocol: TCP
+Device Name: Temperature0
+Temperature: 11
+Device Name: Pressure9
+Pressure: 62
+Bus ID: 2
+
+
+DevID: 1
+Protocol: TCP
+Device Name: Temperature7
+Temperature: 5
+Device Name: Pressure7
+Pressure: 50
+Bus ID: 3
+
+
+DevID: 1
+Protocol: TCP
+Device Name: Temperature7
+Temperature: 5
+Device Name: Pressure7
+Pressure: 50
+Bus ID: 3
+
+
+DevID: 1
+Protocol: TCP
+Device Name: Temperature7
+Temperature: 5
+Device Name: Pressure7
+Pressure: 50
+Bus ID: 3
+
+
+DevID: 3
+Protocol: TCP
+Device Name: Temperature5
+Temperature: 31
+Device Name: Pressure0
+Pressure: 73
+Bus ID: 4
+
+
+DevID: 3
+Protocol: TCP
+Device Name: Temperature5
+Temperature: 31
+Device Name: Pressure0
+Pressure: 73
+Bus ID: 4
+
+
+DevID: 3
+Protocol: TCP
+Device Name: Temperature5
+Temperature: 31
+Device Name: Pressure0
+Pressure: 73
+Bus ID: 4
+
+

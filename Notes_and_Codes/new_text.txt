@@ -1,0 +1,31 @@
+std::vector<std::map<std::string, std::string>> parseJson(const std::string& jsonString) {
+    std::vector<std::map<std::string, std::string>> jsonArray;
+    std::map<std::string, std::string> jsonObject;
+    std::istringstream jsonStream(jsonString);
+    std::string line;
+
+    while (getline(jsonStream, line)) {
+        line = trim(line);
+        if (line == "{" || line == "},") {
+            if (!jsonObject.empty()) {
+                jsonArray.push_back(jsonObject);
+                jsonObject.clear();
+            }
+        } else if (line != "}" && line != "[") {
+            size_t colonPos = line.find(':');
+            if (colonPos != std::string::npos && colonPos > 1 && colonPos < line.size() - 2) {
+                std::string key = trim(line.substr(1, colonPos - 2));
+                std::string value = trim(line.substr(colonPos + 1));
+                if (!key.empty() && !value.empty()) {
+                    if (value.back() == ',') value.pop_back();
+                   if (value.front() == '"' && value.back() == '"') value = value.substr(1, value.size() - 2);
+                    jsonObject[key] = value;
+                }
+            }
+        }
+    }
+    if (!jsonObject.empty()) {
+        jsonArray.push_back(jsonObject);
+    }
+    return jsonArray;
+}

@@ -1,0 +1,216 @@
+DevID: 2
+Protocol: CANBUS
+Device Name: Voltage4
+Voltage: 216
+Device Name: Flowmeter2
+Flow Meter: 8
+Bus ID: 0
+
+
+DevID: 2
+Protocol: CANBUS
+Device Name: Voltage4
+Voltage: 216
+Device Name: Flowmeter2
+Flow Meter: 8
+Bus ID: 0
+
+
+DevID: 2
+Protocol: CANBUS
+Device Name: Voltage8
+Voltage: 117
+Device Name: Flowmeter4
+Flow Meter: 28
+Bus ID: 3
+
+
+DevID: 2
+Protocol: CANBUS
+Device Name: Voltage8
+Voltage: 117
+Device Name: Flowmeter4
+Flow Meter: 28
+Bus ID: 3
+
+
+DevID: 0
+Protocol: CANBUS
+Device Name: Voltage8
+Voltage: 183
+Device Name: Flowmeter0
+Flow Meter: 20
+Bus ID: 0
+
+
+DevID: 0
+Protocol: CANBUS
+Device Name: Voltage8
+Voltage: 183
+Device Name: Flowmeter0
+Flow Meter: 20
+Bus ID: 0
+
+
+DevID: 2
+Protocol: CANBUS
+Device Name: Voltage5
+Voltage: 146
+Device Name: Flowmeter1
+Flow Meter: 5
+Bus ID: 2
+
+
+DevID: 4
+Protocol: CANBUS
+Device Name: Voltage6
+Voltage: 166
+Device Name: Flowmeter6
+Flow Meter: 9
+Bus ID: 0
+
+
+DevID: 4
+Protocol: CANBUS
+Device Name: Voltage6
+Voltage: 166
+Device Name: Flowmeter6
+Flow Meter: 9
+Bus ID: 0
+
+
+DevID: 2
+Protocol: CANBUS
+Device Name: Voltage5
+Voltage: 30
+Device Name: Flowmeter1
+Flow Meter: 17
+Bus ID: 1
+
+
+DevID: 2
+Protocol: CANBUS
+Device Name: Voltage5
+Voltage: 30
+Device Name: Flowmeter1
+Flow Meter: 17
+Bus ID: 1
+
+
+DevID: 4
+Protocol: CANBUS
+Device Name: Voltage4
+Voltage: 22
+Device Name: Flowmeter6
+Flow Meter: 23
+Bus ID: 1
+
+
+DevID: 4
+Protocol: CANBUS
+Device Name: Voltage4
+Voltage: 22
+Device Name: Flowmeter6
+Flow Meter: 23
+Bus ID: 1
+
+
+DevID: 2
+Protocol: CANBUS
+Device Name: Voltage6
+Voltage: 100
+Device Name: Flowmeter4
+Flow Meter: 24
+Bus ID: 0
+
+
+DevID: 3
+Protocol: CANBUS
+Device Name: Voltage6
+Voltage: 157
+Device Name: Flowmeter4
+Flow Meter: 7
+Bus ID: 2
+
+
+DevID: 3
+Protocol: CANBUS
+Device Name: Voltage6
+Voltage: 157
+Device Name: Flowmeter4
+Flow Meter: 7
+Bus ID: 2
+
+
+DevID: 3
+Protocol: CANBUS
+Device Name: Voltage3
+Voltage: 17
+Device Name: Flowmeter8
+Flow Meter: 17
+Bus ID: 1
+
+
+DevID: 3
+Protocol: CANBUS
+Device Name: Voltage3
+Voltage: 17
+Device Name: Flowmeter8
+Flow Meter: 17
+Bus ID: 1
+
+
+DevID: 2
+Protocol: CANBUS
+Device Name: Voltage4
+Voltage: 189
+Device Name: Flowmeter2
+Flow Meter: 12
+Bus ID: 4
+
+
+DevID: 1
+Protocol: CANBUS
+Device Name: Voltage0
+Voltage: 170
+Device Name: Flowmeter7
+Flow Meter: 28
+Bus ID: 2
+
+
+DevID: 1
+Protocol: CANBUS
+Device Name: Voltage0
+Voltage: 170
+Device Name: Flowmeter7
+Flow Meter: 28
+Bus ID: 2
+
+
+DevID: 0
+Protocol: CANBUS
+Device Name: Voltage2
+Voltage: 196
+Device Name: Flowmeter5
+Flow Meter: 9
+Bus ID: 0
+
+
+DevID: 2
+Protocol: CANBUS
+Device Name: Voltage7
+Voltage: 215
+Device Name: Flowmeter0
+Flow Meter: 29
+Bus ID: 3
+
+
+DevID: 2
+Protocol: CANBUS
+Device Name: Voltage7
+Voltage: 215
+Device Name: Flowmeter0
+Flow Meter: 29
+Bus ID: 3
+
+

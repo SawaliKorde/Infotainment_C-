@@ -1,0 +1,1 @@
+savedcmd_/home/rps/Documents/drv_final_folder/drv/drv.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/rps/Documents/drv_final_folder/drv/drv.ko /home/rps/Documents/drv_final_folder/drv/drv.o /home/rps/Documents/drv_final_folder/drv/drv.mod.o

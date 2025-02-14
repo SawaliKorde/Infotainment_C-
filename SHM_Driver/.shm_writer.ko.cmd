@@ -1,0 +1,1 @@
+savedcmd_/home/rps/Documents/SHM_Driver/shm_writer.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/rps/Documents/SHM_Driver/shm_writer.ko /home/rps/Documents/SHM_Driver/shm_writer.o /home/rps/Documents/SHM_Driver/shm_writer.mod.o

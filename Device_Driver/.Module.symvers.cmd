@@ -1,0 +1,1 @@
+savedcmd_/home/rps/Documents/Device_Driver/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/rps/Documents/Device_Driver/Module.symvers -T /home/rps/Documents/Device_Driver/modules.order -i Module.symvers -e 

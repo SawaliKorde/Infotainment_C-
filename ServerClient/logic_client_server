@@ -1,0 +1,69 @@
+socket connect
+map update with socket number but no msg so?
+client send message
+
+map<int> socket_id
+
+4
+5
+6
+
+tell client to write message like = "1:hi"
+break the string
+compare 1 with map lookup
+if found send that message to that id client
+
+
+
+
+{4,5,6,7} - set
+1:hi
+breakk string - 1
+look up in set
+if yes
+send msg to that particular client
+
+//Approach
+2 clients are connected to server
+1,2,3 - are counter ids
+4,5,6 - are socket descriptor of particular client
+server stores id and socket_descriptor of client1 during connections
+map <int, int> target -> {{1:4},{2:5},{3:6}}
+client 1 send msg like "5:message"
+this string goes to server
+that message is stored in string message ---> storeddd
+compare 5 from  message in map if it matches in map ie {2:5}
+it picks from map that is client 2 socket dp 5 using this info it sends data to client2 without showing in server terminal
+
+Client code approach
+We have two functions
+Send message
+-> taking message from command line and send to server
+
+REceive message function
+-> receive function receives message from  server 
+
+
+Threading
+Receive function has its own thread
+Send function is directly called
+
+Formatting
+display function 
+in client terminal show like "Client_DP_ID_{id}: while message receiving
+add cout statements wherever required
+add error handling 
+
+
+display panel
+dp id - displaying correct
+address
+thread id
+client status - flag iff true show connected if false show disconnected 
+
+atomic<bool>status;
+
+
+
+
+

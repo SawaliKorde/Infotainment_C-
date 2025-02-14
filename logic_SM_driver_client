@@ -1,0 +1,24 @@
+Device driver
+	write to /dev/mem
+
+Device driver client
+	- reads the device 
+
+SM Server
+	reading from /dev/mem 
+	add the data from /dev/mem into SM
+	
+SM Client
+	read the data from SM
+	you can use sockets
+	
+What is already there?
+	- device driver
+	    - device name
+	- device driver client
+	     - device name    
+	- SM Server
+	   - read the driver values from /dev/mem
+	   - put the value to SM
+	- SM Client -> no need of change
+	

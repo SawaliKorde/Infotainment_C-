@@ -1,0 +1,28 @@
+for generating random data
+
+bus id - 1
+scale - 1-500
+device id - 1 - means temp sensor
+device ids are fixed - 1,2,3 i.e. - 1 for temp, 2 - pressure sensor, 3 - for rpm sensor
+so define these protocols for de_id
+
+
+Server keeps writing to shared memory
+check the size and clear that size if 4096/4096
+
+now when client connects
+client sends query to server - dev_id - 1, bus_id - 1 
+server sends all the data to client having dev_id - 1 and bus_id - 1
+
+
+now client reads this data and starts writing to the file
+now write the logic to check file size
+if file size exceeds than 10mb then compress the file and fast copy to some location
+
+Client logic
+Client should send request like - devid and busid
+client should listen and receive the bufffer ffrom server
+client should write to a file
+if the file size becomes 10mb then compress it and write to other file
+
+ 

@@ -1,0 +1,1 @@
+savedcmd_/home/rps/Documents/drv_final_folder/drv/drv.mod := printf '%s\n'   drv.o | awk '!x[$$0]++ { print("/home/rps/Documents/drv_final_folder/drv/"$$0) }' > /home/rps/Documents/drv_final_folder/drv/drv.mod

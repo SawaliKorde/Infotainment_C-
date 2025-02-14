@@ -1,0 +1,1 @@
+savedcmd_/home/rps/Documents/drv_final_folder/drv/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/rps/Documents/drv_final_folder/drv/Module.symvers -T /home/rps/Documents/drv_final_folder/drv/modules.order -i Module.symvers -e 

@@ -1,0 +1,16 @@
+using simple vectors
+server has a vector defined for taking input from client
+so that in orderly manner user data can be written to file
+also queueing mechanism required if 2 clients write at one time
+for example :- client1 and client2 connected at same time to server then threads safety is done to avoid race condition
+in vector_message = [client1msg, client2msg] --> server
+then server process the message from queue and write to shared memory and file itself and also notify the clients that "document is modified"
+
+
+thread logic
+one thread for handleclient
+one thread for write to shared memory
+one thread for display status
+one thread for write to file 
+
+

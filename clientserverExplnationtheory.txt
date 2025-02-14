@@ -1,0 +1,51 @@
+Chat program :
+
+a) Connection to a server
+b) We will need a client who can connect to a server that is already running.
+c) We as a client that will connect on a specific "port". A port is nothing but an integer identifier that serves as an entry point.
+d) Port represents an object that allows you to connect, bind or close as needed.
+
+
+Server side :
+	1) WIll start a connection using a communication protocol - This simply means that "Look, I am available here, this is my address, reach out"
+	2) It will bind (commit to being available there)
+	3) Listen to anyone coming in 
+	4) Accept connections - send/recieve data and do what is is designed to do
+	5) When it is done it will close the port (communication channel)
+	6) This will run in an infinite loop since it is a server.
+	7) Clients can come and go as they wish.
+	
+	
+Client side:
+	1) The client will decide to goto the server with the address details (as defined in 1) above under the server side)
+	2) Handhake happens - I have arrived, lets do what we are here for and will communicate using the agreed protocol
+	3) Tx - Transmission, Rx- Receive and when done, close the connection
+	
+Communication Protocol - Simply means, a language or a commonly agreed mechanism of communication (Ex : English, Hindi, Marathi......)
+		In computers we have :
+					a) TCP/IP - Transmission control protocol/Internet protocol - Versions 4 and 6.
+						1) TCP/IP v4 or ipv4 has always one address of the format : xxx.xxx.xxx.xxx, while v6 has a guid 
+						2) Has an object called SOCKET - (also known as socket programming, when used)
+						
+					b) UDP - User Datagram Protocol
+						
+
+	Address - POrt - number 
+Server->===========================<--Client will connect to the server
+	connection object is socket
+	
+ENDIANess - each system has its own way of sending data
+	C1 = 123456 = Server will read it as 654321
+	16 bit, 32 bit handled b
+	
+	The HOST BYTE ORDER = HTONS handles this
+	whatever I send I will send it backwards
+	whatever I read i will reverse it
+	
+
+
+
+
+
+
+					
