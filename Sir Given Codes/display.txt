@@ -1,0 +1,27 @@
+void display() {
+    while (server_running) {
+        {
+            lock_guard<mutex> display_lock(display_mutex);
+            lock_guard<mutex> client_lock(client_mutex);
+            
+            cout << "\n+---------+----------------+----------------+---------------------+--------------+\n";
+            cout << "| " << setw(10) << left << "Socket DP ID"
+                 << "| " << setw(15) << left << "IP Address"
+                 << "| " << setw(15) << left << "Thread ID"
+                 << "| " << setw(10) << left << "Client Status" << " |" << endl;
+            cout << "+---------+----------------+----------------+---------------------+--------------+\n";
+            
+            for (const auto& client : client_map) {
+                string status_emoji = client_status[client.first] ? "\033[32m☺\033[0m" : "\033[31m☹\033[0m";
+                cout << "| " << setw(10) << left << client.second 
+                     << "| " << setw(15) << left << "127.0.0.1"
+                     << "| " << setw(15) << right << this_thread::get_id()
+                     << "| " << setw(10) << left << status_emoji << " |" << endl;
+                cout << "+---------+----------------+----------------+---------------------+--------------+\n";
+            }
+        }
+        
+        this_thread::sleep_for(chrono::seconds(2));
+        system("clear");
+    }
+}

@@ -1,0 +1,22 @@
+setup a shared memory of 4096 bytes
+
+a) Have the server as a producer of data. The server will write once every 3 seconds
+b) The clients will read them at their own interval
+	TCP Clients will read every 1 second
+	CAN BUS clients will read every 2 seconds
+	PROFIBUS clients will read every 5 seconds
+
+c) Data structure to be used:
+	devdata
+	{
+		int devid;	=>Device id
+		int protocol; 	=>TCP,CAN,PROFIBUS
+		string devname; =>name of the device (TP-> temperature, pressure, or FLowMeter, voltage, rpm
+		double devreading;
+		int busid;
+	}
+
+
+d) use ENUM for protocol
+
+e) Bus ID = connector on which the data comes from => Two ->Primary that will work by default, secondary that will take over if the primary is down and vice versa

@@ -1,0 +1,180 @@
+/*
+
+Classes and Objects:
+
+Aircraft, CommercialAircraft, and MilitaryAircraft classes.
+
+Objects boeing747 and f16.
+
+Inheritance:
+
+CommercialAircraft and MilitaryAircraft inherit from Aircraft.
+
+Encapsulation:
+
+Attributes like name, passengers, and weapons are encapsulated within their respective classes.
+
+Polymorphism:
+
+Methods like takeOff, fly, navigate, and land are overridden in derived classes to provide specific behaviors.
+
+*/
+
+
+
+#include <iostream>
+#include <string>
+
+// Base Class: Aircraft
+// Encapsulation: The Aircraft class encapsulates attributes and methods common to all aircraft.
+class Aircraft {
+public:
+    // Constructor: Initializes the aircraft's name.
+    Aircraft(const std::string& name) : name(name) {}
+    
+    // Virtual Methods: These methods can be overridden by derived classes (polymorphism).
+    virtual void takeOff() {
+        takeOffChecklist();
+        std::cout << name << " is taking off.\n";
+    }
+    
+    virtual void fly() {
+        std::cout << name << " is flying at cruising altitude.\n";
+    }
+    
+    virtual void navigate() {
+        navigateChecklist();
+        std::cout << name << " is navigating to the next waypoint.\n";
+    }
+    
+    virtual void land() {
+        landingChecklist();
+        std::cout << name << " is landing.\n";
+    }
+    
+    // Virtual Destructor: Ensures proper cleanup of derived class objects.
+    virtual ~Aircraft() {}
+
+protected:
+    std::string name; // Encapsulation: The name attribute is protected, only accessible within the class and its derived classes.
+
+    // Encapsulation: Checklists are encapsulated within the Aircraft class.
+    void takeOffChecklist() {
+        std::cout << "Before-Takeoff Checklist:\n";
+        std::cout << "1. Auxiliary fuel pump — Off\n";
+        std::cout << "2. Flight controls — Free and correct\n";
+        std::cout << "3. Instruments and radios — Checked and set\n";
+        std::cout << "4. Landing gear position lights — Checked\n";
+        std::cout << "5. Altimeter — Set\n";
+        std::cout << "6. Directional gyro — Set\n";
+        std::cout << "7. Fuel gauges — Checked\n";
+        std::cout << "8. Trim — Set\n";
+        std::cout << "9. Propeller — Exercise\n";
+        std::cout << "10. Magnetos — Checked\n";
+        std::cout << "11. Engine idle — checked\n";
+        std::cout << "12. Flaps — As required\n";
+        std::cout << "13. Seat belts/shoulder harnesses — Fastened\n";
+        std::cout << "14. Parking brake — Off\n";
+        std::cout << "Final items:\n";
+        std::cout << "15. Doors and windows — Locked\n";
+        std::cout << "16. Mixture — Full rich unless above 3,000 feet msl\n";
+        std::cout << "17. Lights — Landing, taxi, strobes on\n";
+        std::cout << "18. Camera — Transponder on\n";
+        std::cout << "19. Action — Engine instruments checked\n";
+    }
+
+    void landingChecklist() {
+        std::cout << "Before-Landing Checklist:\n";
+        std::cout << "1. Fuel selector — Fullest tank\n";
+        std::cout << "2. Directional gyro — Aligned with magnetic compass\n";
+        std::cout << "3. Seat belts/shoulder harnesses — Secure\n";
+        std::cout << "4. Mixture — Full rich unless airport above 3,000 feet msl\n";
+        std::cout << "5. Cowl flaps — As required\n";
+        std::cout << "Final items:\n";
+        std::cout << "6. Landing gear — Down\n";
+        std::cout << "7. Propeller — High rpm\n";
+        std::cout << "8. Flaps — As required\n";
+    }
+
+    void navigateChecklist() {
+        std::cout << "Navigation Checklist:\n";
+        std::cout << "1. Set heading to next waypoint\n";
+    }
+};
+
+// Derived Class: CommercialAircraft
+// Inheritance: Inherits from the Aircraft class.
+class CommercialAircraft : public Aircraft {
+public:
+    // Constructor: Initializes the CommercialAircraft with name and number of passengers.
+    CommercialAircraft(const std::string& name, int passengers)
+        : Aircraft(name), passengers(passengers) {}
+
+    // Override Methods: Override base class methods to include passenger-specific details (polymorphism).
+    void takeOff() override {
+        takeOffChecklist();
+        std::cout << name << " with " << passengers << " passengers is taking off.\n";
+    }
+    void fly() override {
+        std::cout << name << " with " << passengers << " passengers is flying at cruising altitude.\n";
+    }
+    void navigate() override {
+        navigateChecklist();
+        std::cout << name << " with " << passengers << " passengers is navigating to the next waypoint.\n";
+    }
+    void land() override {
+        landingChecklist();
+        std::cout << name << " with " << passengers << " passengers is landing.\n";
+    }
+
+private:
+    int passengers; // Encapsulation: The passengers attribute is private, only accessible within the class.
+};
+
+// Derived Class: MilitaryAircraft
+// Inheritance: Inherits from the Aircraft class.
+class MilitaryAircraft : public Aircraft {
+public:
+    // Constructor: Initializes the MilitaryAircraft with name and number of weapons.
+    MilitaryAircraft(const std::string& name, int weapons)
+        : Aircraft(name), weapons(weapons) {}
+
+    // Override Methods: Override base class methods to include weapon-specific details (polymorphism).
+    void takeOff() override {
+        takeOffChecklist();
+        std::cout << name << " with " << weapons << " weapons is taking off.\n";
+    }
+    void fly() override {
+        std::cout << name << " with " << weapons << " weapons is flying at cruising altitude.\n";
+    }
+    void navigate() override {
+        navigateChecklist();
+        std::cout << name << " with " << weapons << " weapons is navigating to the next waypoint.\n";
+    }
+    void land() override {
+        landingChecklist();
+        std::cout << name << " with " << weapons << " weapons is landing.\n";
+    }
+
+private:
+    int weapons; // Encapsulation: The weapons attribute is private, only accessible within the class.
+};
+
+int main() {
+    // Object Creation: Creating objects of CommercialAircraft and MilitaryAircraft.
+    CommercialAircraft boeing747("Boeing 747", 500);
+    MilitaryAircraft f16("F-16 Fighter Jet", 6);
+
+    // Method Calls: Calling methods on the objects.
+    boeing747.takeOff();
+    boeing747.fly();
+    boeing747.navigate();
+    boeing747.land();
+
+    f16.takeOff();
+    f16.fly();
+    f16.navigate();
+    f16.land();
+
+    return 0;
+}

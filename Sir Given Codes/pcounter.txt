@@ -1,0 +1,127 @@
+/*
+Required Libraries for the program to work
+sudo apt-get install libpcap-dev
+Compilation:
+	gcc -o packet_counter packet_counter.c -lpcap
+	
+	Packet capture metrics:
+	TCP : ========
+	UDP :------
+	ICMP:-------------
+	other:========
+	
+	if per packet counts increase drastically over the last 1 second  lets say 1000 packets from the last second,then log an 		
+	alarm that says too many packets
+	
+	Each protocol run as a thread
+	
+	Logic to implement
+	
+		a) Read the header of the packet to find out what type it is and initalize counters
+		b) Store this in a linked list that has only 4 nodes : TCP/UDP/ICMP/OTHERS
+					Data structure
+								Protocol {
+										char *protocalname;
+										int pcount;
+										int alarm_limit; //packets per second
+										char *alarmstatus; =>In Alarm, Normal
+										int resetpcount;=>Allow the pcount to be set to 0;
+		c) Display thread: Will read the linked list and simply print out the metrics as shown above.
+			take the toal screen wideth as 80 chars, whatever value comes must be scaled to 80. x/80*100
+			
+		1st thing to do : Read about pcaplibrary
+		2nd Figure out how to filter by protocol type
+		3rd Implement each function 
+*/
+
+IMPLEMENTATION LOGIC
+1) Take the required headers 
+    	#include <pcap.h>
+	#include <stdio.h>
+	#include <stdlib.h>
+        #include <netinet/ip.h>  // IP header structure
+	#include <netinet/tcp.h> // TCP header structure
+	#include <netinet/udp.h> //// UDP header structure
+	#include <netinet/ip_icmp.h> // ICMP header structure
+        #include <string.h>
+	#include <unistd.h>
+	#include <time.h>
+	#include <pthread.h>
+	#include <netinet/if_ether.h>
+	
+
+2) Take Structure for tracking protocols
+  Protocol {
+	    char *protocalname;
+	    int pcount;
+	    int alarm_limit; //packets per second
+	    char *alarmstatus; =>In Alarm, Normal
+	    int resetpcount;=>Allow the pcount to be set to 0;
+	   }
+
+3) Take Linked List of only 4 NODES to save protocol info.
+
+4) Use 4 threads for the 4 protocols 
+  - Also require display thread 
+
+5) Function which will monitor spikes  in packets
+
+6) Define the range for each protocol
+ - TCP > 1000 ===> ring alarm
+ - IP > 800 ===> ring alarm
+ - UDP > 200 ===> ring alarm
+ - ICMP > 3000 ===> ring alarm
+
+7) Display the graph of high low
+ - refer old code for the graph ___====__==
+spike -> = 
+low -> _
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------
+#include <pcap.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+int packet_count = 0;
+
+void packet_handler(unsigned char *user, const struct pcap_pkthdr *pkthdr, const unsigned char *packet) {
+    packet_count++;
+    printf("Packet Count: %d\n", packet_count);
+}
+
+int main(int argc, char *argv[]) {
+    pcap_if_t *alldevs, *dev;
+    char errbuf[PCAP_ERRBUF_SIZE];
+    pcap_t *handle;
+
+    // Find all devices
+    if (pcap_findalldevs(&alldevs, errbuf) == -1) {
+        fprintf(stderr, "Error finding devices: %s\n", errbuf);
+        return (2);
+    }
+
+    // Use the first device
+    dev = alldevs;
+    if (dev == NULL) {
+        fprintf(stderr, "No devices found.\n");
+        return (2);
+    }
+
+    // Open the device for capturing
+    handle = pcap_open_live(dev->name, BUFSIZ, 1, 1000, errbuf);
+    if (handle == NULL) {
+        fprintf(stderr, "Couldn't open device %s: %s\n", dev->name, errbuf);
+        return (2);
+    }
+
+    // Start capturing packets
+    pcap_loop(handle, 0, packet_handler, NULL);
+
+    // Close the session
+    pcap_close(handle);
+    pcap_freealldevs(alldevs); // Free the list of devices
+    return (0);
+}

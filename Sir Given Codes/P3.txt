@@ -1,0 +1,29 @@
+a) Device Monitoring System
+	Device :
+		Send data 
+			date,Location, Temperature, Rain possibility
+
+		keep sending data every 1 second
+
+b) Data : Collect it and keep it somewhere
+
+c) Storage :  To Be Done when we do File I/O
+
+d) Analysis:
+	Calculate the Avg of Temperature and Rain Possibility for a given
+	time frame ex: I want the last 10 days average rain possibility
+		I want the last year's average temperature
+		Average Tempetature for last year is : <print some value that 			is calculated  based on the data collected>
+
+e) UI - Let us keep it to command line system for now.
+	Options :
+		1) Start Data Collection
+		2) Pause Data Collection (device)
+		3) Stop Data Collection (device), (all) => Total data collection 						must stop
+		4) See Live data :
+			SlNo. Device Name Location Temperature Rain Possibility
+
+
+
+What Is needed :
+To use everything you have done in the last 3 days and use simple mechanisms to achieve this

@@ -1,0 +1,105 @@
+#include<iostream>
+#include<string>
+using namespace std;
+
+class Cups
+{
+    private:
+        string cupType;
+        double cupCapacity;
+
+    public:
+        Cups(string cupT, double cupC)
+        {
+            cupType = cupT;
+            cupCapacity = cupC;
+        }
+
+        string getCupType()
+        {
+            return cupType;
+        }
+
+        void setCupType(string cupT)
+        {
+            cupType = cupT;
+        }
+
+        void Display()
+        {
+        cout << "This Cup type is " << cupType << " and Capacity is " << cupCapacity << "ml." <<endl;
+        }
+
+        void drink(){}
+
+        void eat(){}
+};
+
+
+class Tea : public Cups
+{
+    public:
+        Tea(string ct, double cc) : Cups(ct, cc){};
+
+        void drink()
+        {
+            cout << "slurp, or blow on hot tea and sip\n\n";
+        }
+};
+
+class Coffee : public Cups
+{
+    public:
+        Coffee(string ct, double cc) : Cups(ct, cc){};
+
+        void drink()
+        {
+            cout << "slurp, or blow on hot Coffee and sip\n\n";
+        }
+};
+
+class Juice : public Cups
+{
+    public:
+        Juice(string ct, double cc) : Cups(ct, cc){};
+
+        void drink()
+        {
+            cout << "It is a juice & cold and drink as your wish\n\n";
+        }
+};
+
+class Icecream : public Cups
+{
+    public:
+        Icecream(string ct, double cc) : Cups(ct, cc){};
+
+        void eat()
+        {
+            cout << "It is -10°c ice cream, eat slowly\n\n";
+        }
+};
+
+
+
+int main()
+{
+    Tea tea("Tea cub", 150);
+    Coffee coffee("coffee", 150);
+    Juice juice("Juice cup", 250);
+    Icecream icecream("icecream cub", 50);
+
+    tea.Display();
+    tea.drink();
+
+    coffee.Display();
+    coffee.drink();
+
+    juice.Display();
+    juice.drink();
+
+    icecream.Display();
+    icecream.eat();
+
+    return 0;
+};

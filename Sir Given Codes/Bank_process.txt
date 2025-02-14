@@ -1,0 +1,38 @@
+Transaction speed = 1 hr
+refunds = 7 - 14 days
+interest calculation = 18hrs
+
+
+
+
+
+Plan
+
+step 1: Analyze the processes which are used
+	a: Review hardware.
+	b: Review software.
+	c: Review the environment.
+step 2:Testing the process and collect data.
+	a: Transaction
+	   - Define the transaction - Deposit, Withdrawal
+	   - Deposit - Process when we have a source account from which money is debited (-) & money is deposited into a target (+).
+		- Source account -> Debit -> Credit -> Target account
+		- Why is debit and credit process taking time.
+		- Debit - check balance in account for amount requested
+			-  Balance exists? 
+			  - Balance = Balance - Amount requested
+			  - Target Account Balance = Target Account Balance + Amount requested.
+			- Decline debit request
+			- 
+			
+	   - Withdrawal - Process when money is debited (-) from an account.
+		- Source account -> Debit
+		- Cause for delay - Server down, connectivity, wait time at the bank.		
+	b: Refund
+	c: Interest calculation
+	
+step 3 : Analyzing the cause.
+step 4: Finding the best possible solution in the given parameters.
+step 5: Implementing and testing.
+step 6:	Testing the process and collect data.
+step 7:Sustain the process

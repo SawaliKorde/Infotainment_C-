@@ -1,0 +1,74 @@
+#include <iostream>
+using namespace std;
+
+// Base class
+class Vehicle {
+private:
+    int speed;
+
+public:
+    string brand, color;
+
+    Vehicle(string b, string c, int s) : brand(b), color(c), speed(s) {}
+
+    void setSpeed(int s) { speed = s; }
+    int getSpeed() { return speed; }
+
+    virtual void showDetails() {
+        cout << "Brand: " << brand << ", Color: " << color << ", Speed: " << speed << " km/h" << endl;
+    }
+
+    virtual void specialFeature() {
+        cout << "This vehicle has a special feature." << endl;
+    }
+};
+
+// Derived class Car
+class Car : public Vehicle {
+public:
+    string fuelType;
+
+    Car(string b, string c, int s, string f) : Vehicle(b, c, s), fuelType(f) {}
+
+    void showFuelType() {
+        cout << "Fuel Type: " << fuelType << endl;
+    }
+
+    void specialFeature() override {
+        cout << "This car has an advanced cruise control system." << endl;
+    }
+};
+
+// Derived class Bike
+class Bike : public Vehicle {
+public:
+    bool hasGear;
+
+    Bike(string b, string c, int s, bool g) : Vehicle(b, c, s), hasGear(g) {}
+
+    void showGearStatus() {
+        cout << "Has Gear: " << (hasGear ? "Yes" : "No") << endl;
+    }
+
+    void specialFeature() override {
+        cout << "This bike has an anti-lock braking system." << endl;
+    }
+};
+
+int main() {
+    // Create Car object
+    Car myCar("Toyota", "Red", 120, "Petrol");
+    myCar.showDetails();
+    myCar.showFuelType();
+    myCar.specialFeature();
+
+    cout << endl;
+
+    // Create Bike object
+    Bike myBike("Yamaha", "Blue", 80, true);
+    myBike.showDetails();
+    myBike.showGearStatus();
+    myBike.specialFeature();
+
+    return 0;
+}

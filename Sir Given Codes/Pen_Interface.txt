@@ -1,0 +1,79 @@
+//Object : Pen 
+
+//Functions : Writing, Erase
+
+#include<iostream>
+#include<string>
+using namespace std;
+
+class pen {
+	public: 
+		virtual void write()=0;
+		virtual void erase()=0;
+		
+
+		virtual ~pen(){};
+};
+//https://www.onlinegdb.com/#tab-stdin
+//Types of pens. Each will do the same as above functions, except for their behavior
+class DotPen : public pen {
+	public:
+		void write() override { cout << "write with dot pen, cant guarantee its smooth"<< endl ;}
+		void erase() override {
+			cout << "Removing what was written already"<< endl;}
+			
+};
+
+
+class GelPen : public pen {
+	public:
+		void write() override { cout << "write with gel pen, cant guarentee its smooth"<< endl;}
+		void erase() override {
+			cout << "Removing what was written already"<< endl;}
+			
+};
+
+class FountainPen : public pen {
+	public:
+		void write() override { cout <<"write with Fountain pen, cant guarentee its smooth"<<endl;}
+		void erase() override {
+			cout << "Removing what was written already"<< endl;}
+
+	void FillInk() {
+	    bool writing = false;
+		
+		if (!writing) { cout << "Please fill up to continue or clean the nib"<< endl;}
+		
+	}
+			
+};
+
+int main() {
+
+	pen* pen1 = new DotPen();
+
+	pen1->write();
+	pen1->erase();
+
+	
+	pen* pen2 = new GelPen();
+	pen2->write();
+	pen2->erase();
+
+	pen* pen3 = new FountainPen();
+	pen3->write();
+	pen3->erase();
+	
+	FountainPen pen4;
+	pen4.FillInk();
+
+
+	delete pen1;
+	delete pen2;
+	delete pen3;
+
+
+	return 0;
+}
+
+

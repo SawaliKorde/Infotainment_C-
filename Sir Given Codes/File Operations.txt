@@ -1,0 +1,188 @@
+/* File Operations :
+	Read : Read Content from a file
+	Write: Write content into the file
+	Empty : Clear the contents of the file
+
+
+
+
+	File Object : FIle Pointer -> WHich contains a "entry point" or a "HANDLE"
+		      to the file. For everything we do to this file, we will 
+		      use this FIle Pointer, to write to the file name
+
+	File Name : Full path of the file where it has to be created. 
+		    Windows : Drive:\Path, ex: C:\MyData\test.txt
+
+		    Linux(Linux like) /MountPoint/Path ex: /home/myfile.txt...
+					
+
+	Open the File : Intention has to be clear -> Write, Read, Append, Binary
+			w(RITE) -> If the file doesn't exist it is created
+	Here we will create a simple class that will Perform all the above 
+
+    What are the file std::ios::xxx modes:
+        std:ios::in
+                1) Open the file for input -read operations
+                2) Can be used with std::ifstream or std::fstream
+                3)Ex: std::iftream file("myfile.txt",std::ios::in);
+
+      std:ios::out
+                1) Open the file for output -write operations
+                2) Can be used with std::ofstream or std::fstream
+                3) IF the file is already present, it will overwrite it or clear it
+                4)Ex: std::iftream file("myfile.txt",std::ios::out);
+        
+      std:ios::app
+                1) Open the file for append -write operations at the end of the file
+                2) Can be used with std::ofstream 
+                3) IF the file is already present, it add to the end of it
+                4)Ex: std::iftream file("myfile.txt",std::ios:app);
+      std:ios::ate
+                1) Open the file and move the file pointer at the end of the file at start
+                2) Unlike the std::ios:app this will allow writing/reading at arbitary positions after opening.
+                3) IF the file is already present, it will overwrite it or clear it
+                4)Ex: std::iftream file("myfile.txt",std::ios::ate);
+
+      std:ios::trunc
+                1) If the file is present, truncate (clear) the content when opening
+                2) Use implicitly with std::ios::out
+                3) Ex: std::iftream file("myfile.txt",std::ios::trunc);
+      std:ios::binary
+                1) Open the file in BInary mode
+                2) Allows to prevent automatic trnaslation of line endings.
+                3) IF the file is already present, it will overwrite it or clear it
+                4)Ex: std::iftream file("myfile.txt",std::ios::binary);
+
+    Default modes for stream classes
+
+    class                   Default Mode
+    std::ifsteram           std::ios::in
+    std::ofstream           std::ios::out
+    std::fstream            std::ios::in
+
+    As a discipline/process:
+            a) Open the file
+            b) Do whatever you have to
+            c) CLOSE THE FILE- To avoid issues with resource leaks
+
+*/	
+
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <vector>
+
+class Fileops 
+{
+	private:
+		std::string filename; //Filename on which we will perform the operation
+       
+	public:
+		Fileops(const std::string& name):filename(name) {}
+
+		void writeToFile(const std::vector<std::string>& lines) 
+		{
+			//This opens in append mode		
+			std::ofstream outfile(filename,std::ios::app);
+			if(!outfile) 
+			{
+				std::cerr << "Error: Can not open the file for writing.\n";
+				return;
+			}
+
+			for (const auto& line:lines) 
+			{ 
+				outfile << line << "\n";
+			}
+
+			outfile.close();
+			std::cout << "Data was written to the file. \n";
+		}
+
+
+		void readFromFile() 
+		{
+			std::ifstream infile(filename);
+			if(!infile) 
+			{
+				std::cerr << "Error:Can not open file for reading.\n";
+			}
+		
+			std::string line;
+			std::cout << "Content in the file:\n";
+			while (std::getline(infile,line)) 
+			{
+				std::cout << line << "\n";
+			}
+			infile.close();
+			
+		}
+
+
+		void emptyFile()
+		{
+
+			//Open the file in truncate mode
+			std::ofstream outfile(filename,std::ios::trunc);
+			if (!outfile) 
+			{
+			  std::cerr << "Error: WHere is the file that has to be cleared ?";
+			}
+			outfile.close();
+
+			std::cout << "File contents cleared !.\n";
+		}
+
+};
+
+// Main  or Driver function to test the file io class 
+
+int main() 
+{
+	Fileops file("myfile.txt");
+	
+	std::vector<std::string> data = {"This will go into a file","Apples are red and round","File opened, read, written and closed", "Now it will be cleared" };
+
+	//Write the data to the file;
+	file.writeToFile(data);
+
+    //Try to read from some place
+    std::string fileName = "myfile.txt";
+    std::ifstream infile(fileName, std::ios::in | std::ios::ate);
+    if (!infile) {
+
+        std::cerr << "Error can not open file.\n";
+        }
+    std::streampos fsize =infile.tellg();
+    std::cout << "File size" << fsize << "Bytes\n";
+
+    std::streampos pos = 26;    //Start reading from the 10th byte in the file
+    infile.seekg(pos);
+
+    if(infile) {
+            std::string content;
+            std::getline(infile,content);
+            std::cout <<"Data from position " << pos << ": " << content << "\n";
+    }else {
+            std::cerr << "Error could not get to the position \n";
+    }
+
+    infile.close();
+    std::cout <<" DOne with Ate.starting again from the first position";
+
+	//Read fromt the file.
+	file.readFromFile();
+
+	//Clear the file of all data
+	//file.emptyFile();
+
+
+	//Read again to confirm it is empty.
+	file.readFromFile();
+
+	return 0;
+}
+
+
+
+

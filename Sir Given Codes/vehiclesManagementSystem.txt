@@ -1,0 +1,99 @@
+#include<iostream>
+using namespace std;
+
+class Vehicle
+{
+    private:
+        int speed;
+
+    public:
+        string brand;
+        string color;
+
+        Vehicle(string brand, string color, int speed)
+        {
+            this->brand = brand;
+            this->color = color;
+            this->speed = speed;
+        }
+
+        int getSpeed()
+        {
+            return speed;
+        }
+
+        void setSpeed(int speed)
+        {
+            this->speed = speed;
+        }
+
+        void showDetails()
+        {
+            cout << "\nBrand is : " << brand << "\ncolour is : " << color << "\nspeed : " << speed << ".\n";
+        }
+
+        void specialFeature()
+        {
+            cout << "This vehicle has a special feature.\n\n";
+        }
+};
+
+class Car : public Vehicle
+{
+    public:
+        string fuelType;
+
+        Car(string brand, string color, int speed, string fuelType) : Vehicle(brand, color, speed), fuelType(fuelType) {}
+
+        void showFuelType()
+        {
+            cout << "Fuel type is : " << fuelType << ".\n";
+        }
+
+        void specialFeature()
+        {
+            cout << "This car has an advanced cruise control system.\n\n";
+        } 
+
+
+
+};
+
+class Bike : public Vehicle
+{
+    public:
+        bool hasGare;
+
+        Bike(string brand, string color, int speed, bool hasGare) : Vehicle(brand, color, speed), hasGare(hasGare) {}
+
+        void showGearStatus()
+        {
+            cout << "This bike has : " << hasGare << ".\n";
+        }
+
+        void specialFeature()
+        {
+            cout << "This bike has an anti-lock braking system.\n\n";
+        }
+};
+
+
+int main()
+{
+    Car car("Jeep", "Red", 150, "petrol");
+    car.showDetails();
+    car.showFuelType();
+    car.specialFeature();
+
+    car.setSpeed(100);
+    cout << "After speed change\n";
+    car.showDetails();
+
+
+    Bike bike("Honda", "black", 80, true);
+    bike.showDetails();
+    bike.showGearStatus();
+    bike.specialFeature();
+
+    return 0;
+}

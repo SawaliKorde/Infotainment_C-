@@ -1,0 +1,61 @@
+Please find the participants login credentials.
+ Login credentials:
+ URL:-    https://cloud4.rpsconsulting.in/console/#/
+Ubuntu Login Credentials
+Username:- rps
+Password:- rps
+Cloud Login Credentials
+    USERNAME	PASSWORD
+24NAG4086_IC01	Pass@word1
+24NAG4086_IC02	Pass@word1
+24NAG4086_IC03	Pass@word1
+24NAG4086_IC04	Pass@word1
+24NAG4086_IC05	Pass@word1
+24NAG4086_IC06	Pass@word1
+24NAG4086_IC07	Pass@word1
+24NAG4086_IC08	Pass@word1
+24NAG4086_IC09	Pass@word1
+24NAG4086_IC10	Pass@word1
+24NAG4086_IC11	Pass@word1
+24NAG4086_IC12	Pass@word1
+24NAG4086_IC13	Pass@word1
+24NAG4086_IC14	Pass@word1
+24NAG4086_IC15	Pass@word1
+24NAG4086_IC16	Pass@word1
+24NAG4086_IC17	Pass@word1
+24NAG4086_IC18	Pass@word1
+24NAG4086_IC19	Pass@word1
+24NAG4086_IC20	Pass@word1
+24NAG4086_IC21	Pass@word1
+24NAG4086_IC22	Pass@word1
+24NAG4086_IC23	Pass@word1
+24NAG4086_IC24	Pass@word1
+24NAG4086_IC25	Pass@word1
+24NAG4086_IC26	Pass@word1
+24NAG4086_IC27	Pass@word1
+24NAG4086_IC28	Pass@word1
+24NAG4086_IC29	Pass@word1
+24NAG4086_IC30	Pass@word1
+24NAG4086_IC31	Pass@word1
+24NAG4086_IC32	Pass@word1
+24NAG4086_IC33	Pass@word1
+24NAG4086_IC34	Pass@word1
+24NAG4086_IC35	Pass@word1
+24NAG4086_IC36	Pass@word1
+24NAG4086_IC37	Pass@word1
+24NAG4086_IC38	Pass@word1
+24NAG4086_IC39	Pass@word1
+24NAG4086_IC40	Pass@word1
+24NAG4086_IC41	Pass@word1
+24NAG4086_IC42	Pass@word1
+24NAG4086_IC43	Pass@word1
+24NAG4086_IC44	Pass@word1
+24NAG4086_IC45	Pass@word1
+24NAG4086_IC46	Pass@word1
+24NAG4086_IC47	Pass@word1
+24NAG4086_IC48	Pass@word1
+24NAG4086_IC49	Pass@word1
+24NAG4086_IC50	Pass@word1
+24NAG4086_IC51	Pass@word1
+24NAG4086_IC52	Pass@word1
+24NAG4086_IC53	Pass@word1

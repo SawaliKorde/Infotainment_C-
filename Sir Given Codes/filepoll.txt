@@ -1,0 +1,70 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <chrono>
+#include <thread>
+#include <sys/stat.h>
+
+using namespace std;
+
+//File size is the only way to check if the file has changed in the easiest manner.
+long getFileSize(const string &filename) {
+    struct stat fileStat;
+    if (stat(filename.c_str(), &fileStat) == 0) {
+        return fileStat.st_size;
+    }
+    return -1; // Return -1 if file does not exist - Error Condition that the file does not exist, will fail the read/write op
+}
+
+int main() {
+    const string filename = "testfile.txt";
+    long lastSize = 0; // Keep track of the file size we know last
+    string input;
+    int writeCounter = 0; // Keep track of how many times we are writing
+
+    cout << "Polling file: " << filename << "\n";
+
+    // Open the file in append mode for writing
+    ofstream outfile(filename, ios::app);
+    if (!outfile.is_open()) {
+        cerr << "Error: Unable to open file for writing!\n";
+        return 1;
+    }
+
+    // Start the Polling loop
+    while (true) {
+        // Check the file size as of now !
+        long currentSize = getFileSize(filename);
+        
+        if (currentSize > lastSize) {
+            // Size has changed, read the file
+            ifstream infile(filename);
+            if (infile.is_open()) {
+                infile.seekg(lastSize); // Let us start reading from the last file size we know.
+                string line;
+                cout << "New content detected: \n";
+                while (getline(infile, line)) {
+                    cout << line << "\n"; // Print new content
+                }
+                infile.close();
+                lastSize = currentSize; // Update the last known size
+            } else {
+                cerr << "Error: Unable to open file for reading!\n";
+            }
+        }
+
+        // Write to file every 5 iterations 
+        if (writeCounter % 5 == 0) {
+            outfile << "Writing new data at iteration " << writeCounter << "\n";
+            outfile.flush();
+            cout << "Data written to file.\n";
+        }
+
+        // Sleep for 1 second before going again
+        this_thread::sleep_for(chrono::seconds(1)); 
+        writeCounter++;
+    }
+
+    outfile.close();
+    return 0;
+}

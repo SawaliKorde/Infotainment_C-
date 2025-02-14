@@ -1,0 +1,326 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define FILENAME "person_list.txt"
+
+// Define the Person structure
+typedef struct Person {
+    char *name;
+    int age;
+    char *email;
+    struct Person *next;
+} Person;
+
+// Function prototypes
+void addPerson(Person **head);
+void printList(Person *head);
+void freeList(Person *head);
+void clearInputBuffer();
+void saveListToFile(Person *head);
+Person *loadListFromFile();
+void searchPerson(Person *head);
+void deletePerson(Person **head);
+
+int main() {
+    Person *head = NULL;
+    int choice;
+
+    // Load the list from the file at startup
+    head = loadListFromFile();
+
+    while (1) {
+        printf("\n--- Menu ---\n");
+        printf("1. Add new person\n");
+        printf("2. Print list\n");
+        printf("3. Search person\n");
+        printf("4. Delete person\n");
+        printf("5. Exit\n");
+        printf("Enter your choice: ");
+        if (scanf("%d", &choice) != 1) {
+            printf("Invalid input. Please enter a number from 1 to 5.\n");
+            clearInputBuffer(); // Clear the invalid input
+            continue;
+        }
+        clearInputBuffer(); // Clear the newline character
+
+        switch (choice) {
+            case 1:
+                addPerson(&head);
+                break;
+            case 2:
+                printList(head);
+                break;
+            case 3:
+                searchPerson(head);
+                break;
+            case 4:
+                deletePerson(&head);
+                break;
+            case 5:
+                // Save the list to the file before exiting
+                saveListToFile(head);
+                freeList(head);
+                printf("Exiting the program.\n");
+                return 0;
+            default:
+                printf("Invalid choice. Please select a number from 1 to 5.\n");
+        }
+    }
+
+    return 0;
+}
+
+// Function to add a new person to the list
+void addPerson(Person **head) {
+    Person *newPerson = (Person *)malloc(sizeof(Person));
+    if (newPerson == NULL) {
+        printf("Memory allocation failed.\n");
+        return;
+    }
+
+    // Allocate memory for name and email
+    char temp[100];
+    size_t len;
+
+    // Input name
+    printf("Enter name: ");
+    fgets(temp, sizeof(temp), stdin);
+    len = strlen(temp);
+    if (len > 0 && temp[len - 1] == '\n') {
+        temp[len - 1] = '\0'; // Remove newline character
+    }
+    newPerson->name = strdup(temp);
+
+    // Input age
+    printf("Enter age: ");
+    if (scanf("%d", &(newPerson->age)) != 1) {
+        printf("Invalid input for age.\n");
+        clearInputBuffer();
+        free(newPerson->name);
+        free(newPerson);
+        return;
+    }
+    clearInputBuffer();
+
+    // Input email
+    printf("Enter email: ");
+    fgets(temp, sizeof(temp), stdin);
+    len = strlen(temp);
+    if (len > 0 && temp[len - 1] == '\n') {
+        temp[len - 1] = '\0'; // Remove newline character
+    }
+    newPerson->email = strdup(temp);
+
+    newPerson->next = NULL;
+
+    // Add to the end of the list
+    if (*head == NULL) {
+        *head = newPerson;
+    } else {
+        Person *current = *head;
+        while (current->next != NULL) {
+            current = current->next;
+        }
+        current->next = newPerson;
+    }
+
+    printf("Person added successfully.\n");
+}
+
+// Function to print the list
+void printList(Person *head) {
+    if (head == NULL) {
+        printf("The list is empty.\n");
+        return;
+    }
+    Person *current = head;
+    int count = 1;
+    while (current != NULL) {
+        printf("\nPerson %d:\n", count);
+        printf("Name : %s\n", current->name);
+        printf("Age  : %d\n", current->age);
+        printf("Email: %s\n", current->email);
+        current = current->next;
+        count++;
+    }
+}
+
+// Function to free the list
+void freeList(Person *head) {
+    Person *current = head;
+    Person *nextPerson;
+    while (current != NULL) {
+        nextPerson = current->next;
+        free(current->name);
+        free(current->email);
+        free(current);
+        current = nextPerson;
+    }
+}
+
+// Function to clear the input buffer
+void clearInputBuffer() {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+}
+
+// Function to save the list to a file
+void saveListToFile(Person *head) {
+    FILE *file = fopen(FILENAME, "w");
+    if (file == NULL) {
+        printf("Could not open file '%s' for writing.\n", FILENAME);
+        return;
+    }
+    Person *current = head;
+    while (current != NULL) {
+        // Write in the format: name,age,email\n
+        fprintf(file, "%s,%d,%s\n", current->name, current->age, current->email);
+        current = current->next;
+    }
+    fclose(file);
+    printf("List saved to '%s'.\n", FILENAME);
+}
+
+// Function to load the list from a file
+Person *loadListFromFile() {
+    FILE *file = fopen(FILENAME, "r");
+    if (file == NULL) {
+        // No existing file; start with an empty list
+        return NULL;
+    }
+    Person *head = NULL;
+    Person *current = NULL;
+    char line[256];
+    while (fgets(line, sizeof(line), file)) {
+        // Remove newline character
+        size_t len = strlen(line);
+        if (len > 0 && line[len - 1] == '\n') {
+            line[len - 1] = '\0';
+        }
+
+        // Split the line into name, age, email
+        char *token = strtok(line, ",");
+        if (token == NULL) continue;
+        char *name = strdup(token);
+
+        token = strtok(NULL, ",");
+        if (token == NULL) {
+            free(name);
+            continue;
+        }
+        int age = atoi(token);
+
+        token = strtok(NULL, ",");
+        if (token == NULL) {
+            free(name);
+            continue;
+        }
+        char *email = strdup(token);
+
+        // Create a new person node
+        Person *newPerson = (Person *)malloc(sizeof(Person));
+        if (newPerson == NULL) {
+            printf("Memory allocation failed.\n");
+            free(name);
+            free(email);
+            fclose(file);
+            freeList(head);
+            return NULL;
+        }
+        newPerson->name = name;
+        newPerson->age = age;
+        newPerson->email = email;
+        newPerson->next = NULL;
+
+        // Add to the end of the list
+        if (head == NULL) {
+            head = newPerson;
+            current = newPerson;
+        } else {
+            current->next = newPerson;
+            current = newPerson;
+        }
+    }
+    fclose(file);
+    if (head != NULL) {
+        printf("List loaded from '%s'.\n", FILENAME);
+    }
+    return head;
+}
+
+// Function to search for a person by name
+void searchPerson(Person *head) {
+    if (head == NULL) {
+        printf("The list is empty.\n");
+        return;
+    }
+    char searchName[100];
+    printf("Enter the name of the person to search: ");
+    fgets(searchName, sizeof(searchName), stdin);
+    size_t len = strlen(searchName);
+    if (len > 0 && searchName[len - 1] == '\n') {
+        searchName[len - 1] = '\0';
+    }
+
+    Person *current = head;
+    int found = 0;
+    while (current != NULL) {
+        if (strcmp(current->name, searchName) == 0) {
+            printf("\nPerson Found:\n");
+            printf("Name : %s\n", current->name);
+            printf("Age  : %d\n", current->age);
+            printf("Email: %s\n", current->email);
+            found = 1;
+            break;
+        }
+        current = current->next;
+    }
+
+    if (!found) {
+        printf("Person with name '%s' not found.\n", searchName);
+    }
+}
+
+// Function to delete a person by name
+void deletePerson(Person **head) {
+    if (*head == NULL) {
+        printf("The list is empty.\n");
+        return;
+    }
+    char deleteName[100];
+    printf("Enter the name of the person to delete: ");
+    fgets(deleteName, sizeof(deleteName), stdin);
+    size_t len = strlen(deleteName);
+    if (len > 0 && deleteName[len - 1] == '\n') {
+        deleteName[len - 1] = '\0';
+    }
+
+    Person *current = *head;
+    Person *previous = NULL;
+    int found = 0;
+
+    while (current != NULL) {
+        if (strcmp(current->name, deleteName) == 0) {
+            found = 1;
+            if (previous == NULL) {
+                // Deleting the head node
+                *head = current->next;
+            } else {
+                previous->next = current->next;
+            }
+            // Free the memory
+            free(current->name);
+            free(current->email);
+            free(current);
+            printf("Person '%s' deleted successfully.\n", deleteName);
+            break;
+        }
+        previous = current;
+        current = current->next;
+    }
+
+    if (!found) {
+        printf("Person with name '%s' not found.\n", deleteName);
+    }
+}

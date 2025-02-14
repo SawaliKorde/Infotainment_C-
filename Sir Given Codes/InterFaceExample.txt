@@ -1,0 +1,90 @@
+/*
+	Interfaces : Printable and Save are abstract base classes (interfaces) with pure virtual functions
+
+	Implementing:	
+		Document class inherits from both printable and saveable and gives concrete implementation for the print and save methods
+
+	Usage: A document object is created. Pointers to pritable and savable are used to call the methods as needed. This means that document can be treated as both interfaces.
+
+	A single object can have multiple interfaces exposed through multiple inheritance
+
+Interfaces - the 3 I rule - 
+		Identify - Know what interfaces the object shoule expose
+		Interaction - List down all the methods it will expose via each interface and put down the inputs/outputs for each method will return when called by another object
+		Implement - Implement the object, the interface and what ever else you want to do.
+
+
+*/
+
+
+Class Printable {
+Public :
+	virtual void print() const =0 ;
+};
+
+Class Saveable {
+Public :
+	virtual void save() const =0 ;
+};
+
+class Editable {
+
+{
+	public :
+		virtual void edit() const =0 ;
+};
+
+Class document : public Printable,public Savable.public Editable
+{
+	public :
+		void print() const override 
+		{
+			Cout <<  “printing doc”’;
+
+		}
+
+		void save() const override 
+		{
+			Cout <<  saving doc”’;
+
+		}
+		void edit() const override {
+
+			cout << document editing..., no just fooled you";
+		}
+
+};
+
+
+int main() 
+{
+	document doc;
+	Printable *p = &doc;
+	Savable *s = &doc;
+	Editable *e;
+
+
+
+	p->print(); => This will call the document::print;
+	s->save()=>This will call the document::save
+	e->edit();
+
+
+	if doc.auth=0
+	{
+
+		cout <<Read only"
+	}
+
+	if doc.auth=1
+	{
+
+		cout << "Read and Print"
+	}
+
+
+
+	return 0;
+
+}
+

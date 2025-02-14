@@ -1,0 +1,192 @@
+#include <iostream>
+#include <string>
+#include <thread>
+#include <chrono>
+using namespace std;
+
+// Base ECU class
+class ECU {
+protected:
+    bool engineOn;
+    int speed;
+
+public:
+    ECU() : engineOn(false), speed(0) {}
+
+    void startEngine() {
+        if (!engineOn) {
+            engineOn = true;
+            cout << "Engine started.\n";
+        } else {
+            cout << "Engine is already running.\n";
+        }
+    }
+
+    void stopEngine() {
+        if (engineOn) {
+            engineOn = false;
+            speed = 0;
+            cout << "Engine stopped.\n";
+        } else {
+            cout << "Engine is already off.\n";
+        }
+    }
+
+    virtual void displayStatus() {
+        cout << "Engine: " << (engineOn ? "ON" : "OFF") << ", Speed: " << speed << " km/h\n";
+    }
+
+    virtual ~ECU() {}
+};
+
+// Lights Control System
+class LightsControl : public ECU {
+private:
+    bool headlightsOn;
+    bool indicatorsOn;
+
+public:
+    LightsControl() : headlightsOn(false), indicatorsOn(false) {}
+
+    void toggleHeadlights() {
+        headlightsOn = !headlightsOn;
+        cout << "Headlights: " << (headlightsOn ? "ON" : "OFF") << endl;
+    }
+
+    void toggleIndicators() {
+        indicatorsOn = !indicatorsOn;
+        cout << "Indicators: " << (indicatorsOn ? "ON" : "OFF") << endl;
+    }
+
+    void displayStatus() override {
+        ECU::displayStatus();
+        cout << "Headlights: " << (headlightsOn ? "ON" : "OFF")
+             << ", Indicators: " << (indicatorsOn ? "ON" : "OFF") << endl;
+    }
+};
+
+// Fuel Monitoring System
+class FuelMonitoring : public ECU {
+private:
+    float fuelLevel;
+
+public:
+    FuelMonitoring() : fuelLevel(50.0f) {}  // Initial fuel level at 50%
+
+    void consumeFuel() {
+        if (engineOn && fuelLevel > 0) {
+            fuelLevel -= 0.5f;
+            if (fuelLevel < 0) fuelLevel = 0;
+            cout << "Fuel consumed. Current level: " << fuelLevel << "%\n";
+        } else if (fuelLevel <= 0) {
+            cout << "Fuel is empty. Please refuel.\n";
+        }
+    }
+
+    void refuel() {
+        fuelLevel = 100.0f;
+        cout << "Fuel tank refilled to 100%.\n";
+    }
+
+    void displayStatus() override {
+        ECU::displayStatus();
+        cout << "Fuel Level: " << fuelLevel << "%\n";
+    }
+};
+
+// Temperature Control System
+class TemperatureControl : public ECU {
+private:
+    float temperature;
+
+public:
+    TemperatureControl() : temperature(25.0f) {}  // Default temperature 25°C
+
+    void increaseTemperature() {
+        temperature += 1.0f;
+        cout << "Temperature increased to: " << temperature << "°C\n";
+    }
+
+    void decreaseTemperature() {
+        temperature -= 1.0f;
+        cout << "Temperature decreased to: " << temperature << "°C\n";
+    }
+
+    void displayStatus() override {
+        ECU::displayStatus();
+        cout << "Cabin Temperature: " << temperature << "°C\n";
+    }
+};
+
+// Main Vehicle Control System
+class VehicleControlSystem {
+private:
+    LightsControl lightsControl;
+    FuelMonitoring fuelMonitoring;
+    TemperatureControl tempControl;
+
+public:
+    void start() {
+        while (true) {
+            cout << "\n--- Vehicle Control System Menu ---\n";
+            cout << "1. Start Engine\n2. Stop Engine\n3. Toggle Headlights\n4. Toggle Indicators\n"
+                 << "5. Consume Fuel\n6. Refuel\n7. Increase Temperature\n8. Decrease Temperature\n"
+                 << "9. Show Status\n0. Exit\n";
+            cout << "Enter your choice: ";
+
+            int choice;
+            cin >> choice;
+
+            switch (choice) {
+                case 1:
+                    lightsControl.startEngine();
+                    break;
+                case 2:
+                    lightsControl.stopEngine();
+                    break;
+                case 3:
+                    lightsControl.toggleHeadlights();
+                    break;
+                case 4:
+                    lightsControl.toggleIndicators();
+                    break;
+                case 5:
+                    fuelMonitoring.consumeFuel();
+                    break;
+                case 6:
+                    fuelMonitoring.refuel();
+                    break;
+                case 7:
+                    tempControl.increaseTemperature();
+                    break;
+                case 8:
+                    tempControl.decreaseTemperature();
+                    break;
+                case 9:
+                    cout << "\n--- System Status ---\n";
+                    lightsControl.displayStatus();
+                    fuelMonitoring.displayStatus();
+                    tempControl.displayStatus();
+                    break;
+                case 0:
+                    cout << "Exiting Vehicle Control System.\n";
+                    return;
+                default:
+                    cout << "Invalid choice. Please try again.\n";
+                    break;
+            }
+
+            // Simulate real-time update for running engine
+            if (lightsControl.startEngine) {
+                fuelMonitoring.consumeFuel();
+                std::this_thread::sleep_for(std::chrono::seconds(1)); // Simulate delay
+            }
+        }
+    }
+};
+
+int main() {
+    VehicleControlSystem vcs;
+    vcs.start();
+    return 0;
+}

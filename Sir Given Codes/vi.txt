@@ -1,0 +1,75 @@
+Vi Commands :
+
+There are 3 modes in Vi editor. There as a new VI editor called VIM - VI Improved.
+the 3 modes are : Normal, Insert and Command.
+
+Normal mode : 
+WHen the file is just opened it starts in normal mode : vi myfile.txt
+In this mode we can navigate the file with the following commands :
+
+Normal Mode VI(M) commands
+
+KeyBoard	Action
+	h 	Move left
+	j	Move down
+	k	Move up
+    (el)l	move right
+        0       Move to beginning of the line
+        $	Move to the end of the line (Use Shift + 4)
+	w	Move to the next word
+	b	Move to previous word
+	G	Go to the last line of the file. (Use Shift + G), if caps lock is not on
+       nG	Go to a given line number. Press Esc if in insert mode, type the line number and G
+
+
+Edit Mode VI(M) commands
+	 x 	Delete the character under the cursor
+	dd	Delete the current line
+	yy	Yank the current line which means copy the current line
+	 p	paste the yanked (copied) line below the current line
+	 u	Undo the last action
+   CTRL +r	Redo the undo action
+
+
+Searching with VI(M)
+
+Swtich off the Insert mode by pressing Escape key (---Insert---) at the bottom of the screen is not visible anymore
+
+  /pattern 	Search forward for a pattern : type the / key and simply type what you want to 		search for
+
+  ?pattern	Search backward for a pattern: same as above except use ? instead of /
+
+	 n	Repeat the search in the same direction
+	 N	Repeat the seaerch in the opposite direction
+
+
+INSERT MODE VI(M) commands
+
+Start with pressing the ESC key, then one of the following:
+
+	i	insert before the cursor
+	I	insert at the begining of the line
+	a	Append after the cursor
+	A	Append at the end of the line
+	o	Open a new line below the current line
+	O	Open a new line above the current line
+
+
+COMMAND MODE VI(M) Commands
+
+File Operations - Start with ESC key
+	:w	Write the file (Save)
+	:q	quit VI
+	:wq	Write and quit
+	:q!	Quit without saving
+
+Set Options:
+:set number	Will show the line numbers
+:set nonumber   Will not show the line numbers
+:set wrap	Will turn on word wrap
+:set nowrap	Will turn off word wrap
+:set ignorecase This will make the search case insensitive
+:set noignorecase this will turn off the case insensitive search
+ 
+	
+	

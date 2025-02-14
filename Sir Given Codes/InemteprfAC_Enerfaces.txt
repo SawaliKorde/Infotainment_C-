@@ -1,0 +1,85 @@
+#include <iostream>
+#include <string>
+
+
+class emp {
+
+public :
+	virtual std::string getname() const =0;
+	virtual std::string getposition() const=0;
+	virtual double  getsalary() const = 0;
+
+	virtual ~emp() {}
+};
+
+//Types of employees
+
+class fte : public emp {
+private :
+	std::string name;
+	std::string desig;
+	double salary;
+
+public:
+	fte(const std::string& n,const std::string& p,double s): name(n),desig(p),salary(s) {}
+
+	std::string getname() const override {
+		return name;
+	}
+
+	std::string getposition() const override {
+		return desig;
+	}
+
+
+	double getsalary() const override {
+		return salary;
+	}
+
+
+};
+
+
+class parttime : public emp {
+private :
+	std::string name;
+	std::string desig;
+	double salary;
+
+public:
+	parttime(const std::string& n,const std::string& p,double s): name(n),desig(p),salary(s) {}
+
+	std::string getname() const override {
+		return name;
+	}
+
+	std::string getposition() const override {
+		return desig;
+	}
+
+
+	double getsalary() const override {
+		return salary;
+	}
+
+
+};
+
+
+int main() {
+
+	emp* fte1 = new fte("Hardik","Program Manager",70000);
+	std::cout << fte1->getname() << " is " << fte1->getposition() << " with salary of Rs " << fte1->getsalary()<< std::endl;
+
+
+
+	emp* pte1 = new parttime("Hardik Pandey"," C++ Coder",65000);
+	std::cout << pte1->getname() << " is " << pte1->getposition() << " with salary of Rs " << pte1->getsalary()<< std::endl;
+
+
+    delete fte1;
+    delete pte1;
+
+
+
+}

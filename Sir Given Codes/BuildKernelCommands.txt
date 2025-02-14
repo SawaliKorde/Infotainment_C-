@@ -1,0 +1,22 @@
+sudo apt update
+sudo apt install -y build-essential libncurses-dev bison flex libssl-dev libelf-dev bc
+
+wget https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.7.tar.xz
+tar -xvf linux-6.7.tar.xz
+cd linux-6.7
+
+cp /boot/config-$(uname -r) .config
+make menuconfig
+
+make clean
+make mrproper
+make -j$(nproc)
+
+sudo make modules_install
+sudo make install
+
+sudo update-grub  # (For Ubuntu/Debian)
+sudo grub2-mkconfig -o /boot/grub2/grub.cfg  # (For RHEL/Fedora)
+
+sudo reboot
+uname -r  # Verify new kernel

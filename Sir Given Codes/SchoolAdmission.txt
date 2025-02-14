@@ -1,0 +1,267 @@
+/* What this code does ? It takes the CLASS diagram as seen in the PpT and implements it in C++ to show, all OOPS CONCEPTS
+
+OOPS concept 			Used
+Encapsulation			Classes, School, Student, Staff, Room and Activity
+Inheritance				Administration inherits from staff
+Polymorphism			Staff and Admin used in the context
+Abstraction				School, Room
+Composition				School contains student, staff, room and activity
+Association				Relationships between school, students, staff, blah blah
+Dynamic Binding			Used to resolve methods at runtime, this is done by calling the constructor
+
+
+For arrays or linked lists : We need to manage the memory, size, elements and blah blah
+Instead, CPP gives us Standard Templates, that do all these tasks. We will use them and save us the headache of management 
+
+
+Flow of writing code
+include header files
+define classes
+
+
+Classes and Relationships : Classes School,Student, Staff,Administrationm Room and Activity		
+							Administration inherits from staff
+							
+Encapsulation : Private data members in the School CLASS
+				Controlled access through methods using addStudent,addStaff ...
+Polymorphism : when adding staff and administration using pointers
+			We used dynamic_cast to identify Administration object
+			
+Dynamic Memory Management: Using the "new" for staff objects. 
+
+*/
+
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+class Student {
+		public:
+			int student_id;
+			string name;
+			string grade;
+
+		
+		Student(int id,string n, string g) :student_id (id),name(n),grade(g) {}
+	};
+
+class Salary
+{
+    public :
+        double BasicSalary;
+        double Bonus;
+        double Deduction;
+        double TakeHomeSalary = 0;
+        
+
+        Salary(double beSal, double bonus, double deduct) : BasicSalary(beSal), Bonus(bonus), Deduction(deduct){}
+
+        void calSal()
+        {
+            TakeHomeSalary = BasicSalary + Bonus - Deduction;
+        }
+};
+
+class Staff {
+	public :
+		int staff_id;
+		string name;
+		string role;
+        double mSalary;
+        Salary sal;
+
+	
+		Staff(int id, string n, string r, double sal, double bonus, double deduct) : staff_id(id),name(n),role(r),sal(sal, bonus, deduct) {}
+        virtual ~Staff() {}
+
+	};
+
+class Administration : public Staff {
+    public:
+	    string admintasks;
+
+	Administration(int id,string n, string r,string ats):Staff(id,n,r, sal),admintasks(ats){}
+};
+
+class Room {
+	public :
+	    int rid;
+	    string rtype;
+	    int rcapacity;
+
+	Room(int id, string type, int cap) : rid(id),rtype(type),rcapacity(cap) {}
+};
+
+
+class Activity { 
+
+	public :
+		int actid;
+		string name;
+		vector<string> participants;
+
+		Activity(int id,string n):actid(id),name (n) {}
+
+		void addPeople(string participant) {
+			participants.push_back(participant);
+        }
+};
+
+
+
+class Accounts 
+{
+    public :
+        string expensesType;
+        double ExpenseAmount;
+        double OpeningBalance;
+
+        Accounts(string expType, double expAmount, double openBal) : expensesType(expType), ExpenseAmount(expAmount), OpeningBalance(openBal){}
+
+        void addExpenses(double amount)
+        {
+            ExpenseAmount = amount + ExpenseAmount;
+        }
+
+        double calBal()
+        {
+            return OpeningBalance - ExpenseAmount;
+        }
+};
+
+
+
+
+class School {
+	private:
+		string name;
+		string address;
+		vector <Student> students;
+		vector<Staff *>staff ;
+		vector <Room> rooms;
+		vector<Activity> activites;
+        vector<Salary> salary;
+        vector<Accounts> accounts;
+        
+		
+	public:
+		School(string n,string add): name(n),address(add){}
+		
+		void addStudent(Student student) {
+				students.push_back(student);
+			}
+		
+		void addStaff(Staff *st) {
+				staff.push_back(st);
+			}		
+		
+		void addRoom(Room r) {
+				rooms.push_back(r);
+			}
+		void addAct(Activity act) {
+			activites.push_back(act);
+			}
+
+        void addSal(Salary sal)
+        {
+            salary.push_back(sal);
+        }
+
+        void addExp(Accounts acc)
+        {
+            accounts.push_back(acc);
+        }
+
+	void showinfo() {
+			cout << "School Name:" << name << "\n Address: "<< address << "\n";
+			
+			cout << "\nStudents:\n";
+			for (const auto& student : students) {
+				cout << "ID : "<< student.student_id << ", Name :" << student.name << ", Grade: " <<student.grade << "\n";
+				}
+				
+				
+			cout << "\nStaff:\n";	
+			for (const auto& s : staff ) {
+				cout << "ID : " << s->staff_id << "Name : " << s->name << ", Role: " << s->role;
+				
+				if (Administration *admin = dynamic_cast <Administration*>(s)) {
+					cout << ", AdminTasks: " << admin->admintasks;
+					}
+			}
+					
+			cout << "\n Rooms: \n";
+			for (const auto& r : rooms) {
+				cout << "ID: " << r.rid << ", Type: " << r.rtype << ", Capacity: " << r.rcapacity << "\n";
+				}
+				
+			cout << "\n Activities: \n ";
+			for (const auto& act : activites) 
+			{
+				cout << "ID : " << act.actid << ", Name : " << act.name << ", Participants: ";
+				
+					for (const auto& pp : act.participants) {
+						cout << pp << "";
+					}
+			
+			}
+					
+		cout << "\n== All hard work done !\n" ;		
+
+	
+			
+    }
+
+		~School() 
+		{
+			for (auto& s: staff) { delete s;}
+		}	
+};
+
+int main() {
+    
+	School school ("My School","Home always ");
+
+	
+	school.addStudent(Student(1,"Sujitha","Grade 1"));
+	school.addStudent(Student(2,"Ved Prakash","Grade 2"));	
+	
+	school.addStaff(new Staff(1,"Hardik Chourasia","Teacher", 25000.0));
+	school.addStaff(new Administration(2,"Ms. Binu","Principal","Administration"));
+	
+	school.addRoom(Room(101,"Class Room",30));
+	school.addRoom(Room(102,"Detention Room",1));	
+	school.addRoom(Room(103,"Lab",30));
+	
+	Activity act1(1,"The Quiet Club for people who dont talk");
+		act1.addPeople("Maniraj");
+		act1.addPeople("Mahendra" );
+		act1.addPeople("Akash");
+	
+		
+	Activity act2(2,"Math club - for those who dont like it");	
+		act2.addPeople("Ajit\n");
+		act2.addPeople("Akkanagamma\n");
+		act2.addPeople("Ankur\n");
+
+    Activity act3(3, "hungry people\n");
+        act3.addPeople("kiran \n");
+        act3.addPeople("maniraj \n");
+        act3.addPeople("sai \n");
+        act3.addPeople("whole class");
+
+	school.addAct(act1);
+	school.addAct(act2);
+    school.addAct(act3);
+
+    school.addSal(Salary(25000.0, 2000.0, 500.0));
+    
+
+    //Salary sal(25000.0, 2000.0, 500);
+
+    Accounts acc("salary", 20000.00, 30000);
+	
+	school.showinfo();
+}

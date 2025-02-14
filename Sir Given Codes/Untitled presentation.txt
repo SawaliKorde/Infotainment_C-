@@ -1,0 +1,25 @@
+1000 page book
+Find - check the index
+Edit /proof read -> SOmeone else
+Copy/Print all 1000 pages and give to X ⇒Pass by value
+Page # 10 para 1, sentence 3 Typo error on Bibliography -> References
+Page #, Para, correction=350
+
+Instead of Copy/Print all 1000 pages and give to X simply give the original book =>Pass by reference
+
+#include <stdio.h>
+Typedef struct {
+	Char book[100];
+Char pages[1000];
+}book;
+//Pass by value
+Void editbook(book book) { copy of the book is changed, original remains intact - There are two copies in RAM}
+//Pass by pointer
+Void editbookviapointer(book *book){ directly modify the original - There is only one copy in Memory}
+Int main() {
+Book mybook;
+editbook(mybook);
+editbookviapointer(&mybook);
+Return 0;
+}
+

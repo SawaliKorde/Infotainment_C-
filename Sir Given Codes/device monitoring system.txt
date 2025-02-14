@@ -1,0 +1,71 @@
+#include <iostream>
+#include <string>
+#include <chrono>
+#include <ctime>
+using namespace std;
+
+class Device {
+private:
+    int id;             // Unique ID for the device
+    string location;    // Location of the device
+
+public:
+    // Constructor to initialize the device
+    Device(int did, string dlocation) : id(did), location(dlocation) {}
+
+    // Getter for ID
+    int getId() {
+        return id;
+    }
+
+    // Getter for location
+    string getLocation() {
+        return location;
+    }
+
+    // Setter for ID
+    void setId(int d_id) {
+        id = d_id;
+    }
+
+    // Setter for location
+    void setLocation(string d_location) {
+        location = d_location;
+    }
+
+    // Virtual function for sending data (can be overridden in derived classes)
+    virtual void sendData() {
+        cout << "Device ID: " << id << ", Location: " << location << " is sending data...\n";
+    }
+
+    // Function to get the current time as a string
+    string getTime() {
+        auto now = chrono::system_clock::now();
+        time_t currentTime = chrono::system_clock::to_time_t(now);
+        return string(ctime(&currentTime)); // Convert time to string
+    }
+};
+
+int main() {
+    // Example usage of the Device class
+    Device device1(1, "New York");
+    cout << "Device ID: " << device1.getId() << endl;
+    cout << "Location: " << device1.getLocation() << endl;
+
+    // Simulate sending data
+    device1.sendData();
+    cout << "Current Time: " << device1.getTime() << endl;
+
+    // Updating device properties
+    device1.setId(2);
+    device1.setLocation("London");
+    cout << "\nUpdated Device Info:\n";
+    cout << "Device ID: " << device1.getId() << endl;
+    cout << "Location: " << device1.getLocation() << endl;
+
+    // Simulate sending data again
+    device1.sendData();
+    cout << "Current Time: " << device1.getTime() << endl;
+
+    return 0;
+}

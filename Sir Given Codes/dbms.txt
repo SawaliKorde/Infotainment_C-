@@ -1,0 +1,289 @@
+#include <iostream>
+#include <string>
+#include <map>
+#include <vector>
+#include <sstream>
+#include <algorithm>
+#include <set>
+
+using namespace std;
+
+struct Record {
+    map<string, string> columns;
+};
+
+struct Table {
+    string name;
+    vector<string> column_names;
+    vector<Record> rows;
+
+    void insert(vector<string> values) {
+        Record r;
+        for (size_t i = 0; i < values.size(); i++) {
+            r.columns[column_names[i]] = values[i];
+        }
+        rows.push_back(r);
+    }
+
+    void select() {
+        if (rows.empty()) {
+            cout << "No records found." << endl;
+            return;
+        }
+        // Print column names
+        for (auto& col : column_names) {
+            cout << col << "\t";
+        }
+        cout << endl;
+        // Print records
+        for (auto& row : rows) {
+            for (auto& col : column_names) {
+                cout << row.columns.at(col) << "\t";
+            }
+            cout << endl;
+        }
+    }
+
+    void update(string column, string old_value, string new_value) {
+        bool updated = false;
+        for (auto& row : rows) {
+            if (row.columns[column] == old_value) {
+                row.columns[column] = new_value;
+                updated = true;
+            }
+        }
+        if (updated)
+            cout << "Update successful." << endl;
+        else
+            cout << "No matching records found." << endl;
+    }
+
+    void delete_record(string column, string value) {
+        auto it = remove_if(rows.begin(), rows.end(), [&column, &value](Record& r) {
+            return r.columns[column] == value;
+        });
+        if (it != rows.end()) {
+            rows.erase(it, rows.end());
+            cout << "Record(s) deleted." << endl;
+        } else {
+            cout << "No matching records found." << endl;
+        }
+    }
+
+    // Perform INNER JOIN between two tables based on a common column
+    static void join(const Table& table1, const Table& table2, const string& column_name) {
+        bool column_found = false;
+        for (const string& col1 : table1.column_names) {
+            if (col1 == column_name) {
+                column_found = true;
+                break;
+            }
+        }
+
+        if (!column_found) {
+            cout << "Column " << column_name << " not found in table1." << endl;
+            return;
+        }
+
+        column_found = false;
+        for (const string& col2 : table2.column_names) {
+            if (col2 == column_name) {
+                column_found = true;
+                break;
+            }
+        }
+
+        if (!column_found) {
+            cout << "Column " << column_name << " not found in table2." << endl;
+            return;
+        }
+
+        // Perform the JOIN
+        vector<string> all_columns = table1.column_names;
+        all_columns.insert(all_columns.end(), table2.column_names.begin(), table2.column_names.end());
+
+        for (const auto& row1 : table1.rows) {
+            for (const auto& row2 : table2.rows) {
+                if (row1.columns.at(column_name) == row2.columns.at(column_name)) {
+                    // Print the joined row
+                    for (const auto& col1 : table1.column_names) {
+                        cout << row1.columns.at(col1) << "\t";
+                    }
+                    for (const auto& col2 : table2.column_names) {
+                        cout << row2.columns.at(col2) << "\t";
+                    }
+                    cout << endl;
+                }
+            }
+        }
+    }
+};
+
+class Database {
+public:
+    map<string, Table> tables;
+
+    void create_table(string name, vector<string> column_names) {
+        Table table;
+        table.name = name;
+        table.column_names = column_names;
+        tables[name] = table;
+        cout << "Table " << name << " created successfully." << endl;
+    }
+
+    Table* get_table(string name) {
+        if (tables.find(name) != tables.end())
+            return &tables[name];
+        else {
+            cout << "Table not found!" << endl;
+            return nullptr;
+        }
+    }
+};
+
+class DBMS {
+private:
+    map<string, Database> databases;
+    Database* current_db;
+
+public:
+    DBMS() : current_db(nullptr) {}
+
+    void create_database(string name) {
+        Database db;
+        databases[name] = db;
+        cout << "Database " << name << " created successfully." << endl;
+    }
+
+    void use_database(string name) {
+        if (databases.find(name) != databases.end()) {
+            current_db = &databases[name];
+            cout << "Switched to database " << name << "." << endl;
+        } else {
+            cout << "Database not found!" << endl;
+        }
+    }
+
+    Database* get_current_db() {
+        return current_db;
+    }
+
+    void show_databases() {
+        if (databases.empty()) {
+            cout << "No databases created." << endl;
+            return;
+        }
+        for (auto& db : databases) {
+            cout << db.first << endl;
+        }
+    }
+
+    void run_command(const string& cmd) {
+        stringstream ss(cmd);
+        string command;
+        ss >> command;
+
+        if (command == "create") {
+            string obj_type;
+            ss >> obj_type;
+
+            if (obj_type == "database") {
+                string db_name;
+                ss >> db_name;
+                create_database(db_name);
+            } else if (obj_type == "table") {
+                string table_name;
+                ss >> table_name;
+
+                vector<string> columns;
+                string column;
+                while (ss >> column) {
+                    columns.push_back(column);
+                }
+
+                if (current_db) {
+                    current_db->create_table(table_name, columns);
+                } else {
+                    cout << "No database selected." << endl;
+                }
+            }
+        }
+        else if (command == "use") {
+            string db_name;
+            ss >> db_name;
+            use_database(db_name);
+        }
+        else if (command == "show") {
+            string obj_type;
+            ss >> obj_type;
+
+            if (obj_type == "databases") {
+                show_databases();
+            }
+            else if (obj_type == "tables") {
+                if (current_db) {
+                    for (auto& table : current_db->tables) {
+                        cout << table.first << endl;
+                    }
+                } else {
+                    cout << "No database selected." << endl;
+                }
+            }
+        }
+        else if (command == "insert") {
+            string table_name;
+            ss >> table_name;
+
+            Table* table = current_db ? current_db->get_table(table_name) : nullptr;
+            if (table) {
+                vector<string> values;
+                string value;
+                while (ss >> value) {
+                    values.push_back(value);
+                }
+                table->insert(values);
+            }
+        }
+        else if (command == "select") {
+            string table_name;
+            ss >> table_name;
+
+            Table* table = current_db ? current_db->get_table(table_name) : nullptr;
+            if (table) {
+                table->select();
+            }
+        }
+        else if (command == "join") {
+            string table1_name, table2_name, column_name;
+            ss >> table1_name >> table2_name >> column_name;
+
+            Table* table1 = current_db ? current_db->get_table(table1_name) : nullptr;
+            Table* table2 = current_db ? current_db->get_table(table2_name) : nullptr;
+
+            if (table1 && table2) {
+                Table::join(*table1, *table2, column_name);
+            }
+        }
+        else {
+            cout << "Unknown command!" << endl;
+        }
+    }
+
+    void interactive_shell() {
+        string input;
+        while (true) {
+            cout << "DBMS> ";
+            getline(cin, input);
+            if (input == "exit") {
+                break;
+            }
+            run_command(input);
+        }
+    }
+};
+
+int main() {
+    DBMS dbms;
+    dbms.interactive_shell();
+    return 0;
+}
